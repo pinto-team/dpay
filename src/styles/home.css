@@ -58,6 +58,296 @@ md-navigation-bar.home-nav-bar {
   padding-block-end: 8px;
 }
 
+.home-tab--home {
+  padding-block-start: 28px;
+}
+
+/* ─── Home wallet card ─── */
+
+.home-wallet-card {
+  display: grid;
+  gap: 0;
+  width: 100%;
+}
+
+.home-wallet-card__balance-row,
+.home-wallet-card__debt-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.home-wallet-card__balance-row {
+  padding-block-end: 16px;
+}
+
+.home-wallet-card__balance {
+  margin: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.home-wallet-card__balance-label {
+  font-weight: 400;
+}
+
+.home-wallet-card__balance-value {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.home-wallet-card__balance-value .amount-currency {
+  margin-inline-start: 4px;
+  font-weight: 400;
+}
+
+.home-wallet-card__debt-line {
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.home-wallet-card__debt-value {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.home-wallet-card__debt-value .amount-currency {
+  margin-inline-start: 4px;
+  font-weight: 600;
+}
+
+.home-wallet-card__details {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--md-sys-color-primary);
+  white-space: nowrap;
+}
+
+.home-wallet-card__details .material-symbols-rounded {
+  font-size: 20px;
+}
+
+.home-wallet-card__divider {
+  height: 1px;
+  background: var(--md-sys-color-outline-variant);
+}
+
+.home-wallet-card__debt-row {
+  padding-block-start: 16px;
+}
+
+.home-wallet-card__debt-info {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: grid;
+  gap: 6px;
+  text-align: right;
+}
+
+.home-wallet-card__debt-line,
+.home-wallet-card__due {
+  margin: 0;
+}
+
+.home-wallet-card__debt-label {
+  font-weight: 600;
+}
+
+.home-wallet-card__due {
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.home-wallet-card__pay {
+  flex-shrink: 0;
+  height: auto;
+  --md-filled-button-container-height: 40px;
+}
+
+/* ─── Bottom sheet ─── */
+
+.bottom-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.bottom-sheet__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: var(--md-sys-color-scrim, #000);
+  opacity: 0.32;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.bottom-sheet__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 430px;
+  margin-inline: auto;
+  max-height: min(92svh, 640px);
+  height: fit-content;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--md-sys-color-surface-container-lowest);
+  border-start-start-radius: 28px;
+  border-start-end-radius: 28px;
+  box-shadow: 0 -2px 12px rgb(0 0 0 / 8%);
+  pointer-events: auto;
+  animation: bottom-sheet-in 280ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes bottom-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.bottom-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px 8px 24px;
+  flex-shrink: 0;
+}
+
+.bottom-sheet__title {
+  margin: 0;
+  flex: 1;
+  text-align: right;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-surface);
+}
+
+.bottom-sheet__divider {
+  height: 1px;
+  background: var(--md-sys-color-outline-variant);
+  flex-shrink: 0;
+}
+
+.bottom-sheet__body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px 20px 48px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Credit details sheet ─── */
+
+.credit-details {
+  display: grid;
+  gap: 20px;
+}
+
+.credit-details__summary {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.credit-details__stats {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 8px;
+  text-align: right;
+}
+
+.credit-details__label {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.credit-details__amount {
+  margin: 0;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.credit-details__amount .amount-currency {
+  font-weight: 400;
+}
+
+.credit-details__total-pill {
+  display: inline-flex;
+  justify-content: center;
+  align-self: flex-end;
+  padding: 6px 12px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 999px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.credit-details__ring {
+  flex-shrink: 0;
+}
+
+.credit-details__ring-track {
+  stroke: var(--md-sys-color-surface-container-high);
+}
+
+.credit-details__ring-progress {
+  stroke: var(--md-sys-color-primary);
+}
+
+.credit-details__section-divider {
+  height: 1px;
+  background: var(--md-sys-color-outline-variant);
+}
+
+.credit-details__help {
+  display: grid;
+  gap: 16px;
+  text-align: right;
+}
+
+.credit-details__help-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.credit-details__help-body {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.75;
+}
+
 .home-tab--placeholder {
   min-height: 45vh;
   place-content: center;

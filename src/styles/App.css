@@ -64,6 +64,12 @@ body {
   height: 48px;
 }
 
+
+.-spacer {
+  width: 24px;
+  height: 24px;
+}
+
 .material-symbols-rounded {
   font-family: "Material Symbols Rounded";
   font-weight: normal;

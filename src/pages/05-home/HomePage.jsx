@@ -6,7 +6,7 @@ import OrderDetailsView from "./OrderDetailsView.jsx";
 import AccountTab from "./tabs/AccountTab.jsx";
 import OrdersTab from "./tabs/OrdersTab.jsx";
 import PaymentsTab from "./tabs/PaymentsTab.jsx";
-import PlaceholderTab from "./tabs/PlaceholderTab.jsx";
+import HomeTab from "./tabs/HomeTab.jsx";
 
 const TAB = {
     HOME: 0,
@@ -115,12 +115,7 @@ function HomePage() {
 
         switch (activeTab) {
             case TAB.HOME:
-                return (
-                    <PlaceholderTab
-                        description="به د‌پی خوش آمدید. فروشگاه‌های حضوری و خدمات اصلی به‌زودی از این بخش در دسترس قرار می‌گیرند."
-                        icon="home"
-                    />
-                );
+                return <HomeTab />;
             case TAB.ORDERS:
                 return <OrdersTab onOpenOrder={setSelectedOrderId} />;
             case TAB.PAYMENTS:

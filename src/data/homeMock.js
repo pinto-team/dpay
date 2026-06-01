@@ -1,5 +1,21 @@
 /** دادهٔ نمونه — پوشش حالت‌های پرداخت */
 
+export const walletSummary = {
+    balance: "۸,۵۷۲,۰۰۰",
+    payableDebt: "۶۱۷,۲۵۰",
+    dueLabel: "پایان روز ۳۰ آبان",
+};
+
+export const creditDetails = {
+    remaining: walletSummary.balance,
+    total: "۱۰,۰۰۰,۰۰۰",
+    remainingRatio: 0.8572,
+    helpTitle: "چطور از اعتبار د‌پی استفاده کنم؟",
+    helpBody:
+        "می‌توانید با اعتبارتان از فروشگاه‌های حاضر در د‌پی به‌صورت آنلاین یا حضوری خرید کنید و در چهار قسط پرداخت کنید.",
+    storesActionLabel: "مشاهده فروشگاه‌ها",
+};
+
 export const payments = [
     {
         id: "pay-1",
