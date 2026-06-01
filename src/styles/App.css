@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  direction: rtl;
+  background: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+}
+
+.app-shell {
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  background: var(--md-sys-color-background);
+}
+
+.screen {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100svh;
+  overflow-y: auto;
+}
+
+/* Shared app scaffold */
+.app-scaffold {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  width: 100%;
+  min-height: 64px;
+  padding-inline: 4px;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.top-bar-title {
+  margin: 0;
+  text-align: center;
+  /* ریزتر و ضخیم‌تر از title-large پیش‌فرض متریال (۲۲px/۴۰۰) */
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.top-bar-spacer {
+  width: 48px;
+  height: 48px;
+}
+
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.screen-body {
+  flex: 1;
+  padding-inline: 24px;
+  padding-block-start: 24px;
+  padding-block-end: 40px;
+}
+
+/* Shared page content */
+.page-content {
+  display: grid;
+  gap: 32px;
+}
+
+.content-header {
+  display: grid;
+  gap: 12px;
+}
+
+.content-title,
+.content-description,
+.terms-text,
+.helper-text,
+.phone-display {
+  margin: 0;
+}
+
+.content-title,
+.content-description {
+  text-align: right;
+}
+
+.content-description,
+.helper-text {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.form-stack {
+  display: grid;
+  gap: 24px;
+}
+
+.action-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.action-stack--after-form {
+  margin-top: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+md-filled-button.full-width,
+md-outlined-text-field.full-width {
+  width: 100%;
+}
+
+md-filled-button {
+  height: 56px;
+}
+
+.terms-text {
+  text-align: center;
+  color: var(--md-sys-color-primary);
+}
+
+/* Inline helper rows */
+.inline-helper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.inline-helper md-text-button {
+  margin-inline-start: -8px;
+}
+
+/* OTP */
+.otp-code-field {
+  direction: ltr;
+}
+
+.helper-text {
+  margin-top: -8px;
+  text-align: center;
+}
+
+/* Basic info */
+.phone-display {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}

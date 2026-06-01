@@ -1,0 +1,171 @@
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Thin.woff2") format("woff2");
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-UltraLight.woff2") format("woff2");
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Light.woff2") format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Medium.woff2") format("woff2");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-DemiBold.woff2") format("woff2");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-ExtraBold.woff2") format("woff2");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Black.woff2") format("woff2");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-ExtraBlack.woff2") format("woff2");
+	font-weight: 950;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "IRANSansXFaNum";
+	src: url("/fonts/IRANSansXFaNum-Heavy.woff2") format("woff2");
+	font-weight: 1000;
+	font-style: normal;
+	font-display: swap;
+}
+:root {
+	--app-font-family: "IRANSansXFaNum", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+	/*
+      Material Web typography tokens
+      این‌ها باعث می‌شن کامپوننت‌های md-* هم از همین فونت استفاده کنن.
+    */
+	--md-ref-typeface-brand: var(--app-font-family);
+	--md-ref-typeface-plain: var(--app-font-family);
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	direction: rtl;
+	font-family: var(--app-font-family);
+
+	/*
+      آنتی‌الیاسینگ: بدون این‌ها خط فارسی سنگین/زمخت رندر می‌شه.
+      با این‌ها متن لطیف‌تر و تمیزتر می‌شه (مخصوصاً روی مک و صفحه‌های Retina).
+    */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* برای المان‌های معمولی خارج از Shadow DOM */
+button,
+input,
+textarea,
+select {
+	font-family: var(--app-font-family);
+}
+
+/*
+   اصلاح فاصله‌ی خطی برای فارسی.
+   اعداد پیش‌فرض متریال برای فونت لاتین (Roboto) تنظیم شده و برای فارسی
+   خیلی تنگ است. این‌ها بیرون از @layer هستند پس روی کلاس‌های md-typescale-*
+   اولویت دارند، ولی متریک داخلی کامپوننت‌های md-* را دست نمی‌زنند.
+*/
+.md-typescale-headline-large {
+	line-height: 1.4;
+}
+
+.md-typescale-headline-medium {
+	line-height: 1.45;
+}
+
+.md-typescale-headline-small {
+	line-height: 1.5;
+}
+
+.md-typescale-title-large {
+	line-height: 1.45;
+}
+
+.md-typescale-title-medium {
+	line-height: 1.6;
+}
+
+.md-typescale-body-large {
+	line-height: 1.75;
+}
+
+.md-typescale-body-medium {
+	line-height: 1.7;
+}
+
+.md-typescale-body-small {
+	line-height: 1.65;
+}
+
+/*
+   سلسله‌مراتب وزن: تیتر اصلی صفحه ضخیم‌تر تا از متن توضیحی جدا شود.
+   متن body عمداً وزن ۴۰۰ می‌ماند تا لطیف بخواند.
+*/
+.content-title {
+	font-weight: 700;
+}
