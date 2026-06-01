@@ -166,3 +166,20 @@ md-filled-button {
   text-align: right;
   color: var(--md-sys-color-on-surface);
 }
+
+/* Terms */
+.terms-body {
+  display: grid;
+  gap: 16px;
+}
+
+.terms-body p,
+.terms-section-title {
+  margin: 0;
+  text-align: right;
+}
+
+.terms-section-title {
+  margin-block-start: 8px;
+  color: var(--md-sys-color-on-surface);
+}

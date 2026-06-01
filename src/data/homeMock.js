@@ -1,0 +1,182 @@
+/** دادهٔ نمونه — فقط برای دمو UI */
+
+export const payments = [
+    {
+        id: "pay-1",
+        date: "۱۴۰۵/۲/۲۷",
+        time: "۱۱:۰۸",
+        status: "success",
+        statusLabel: "تراکنش موفق",
+        reference: "345509840646",
+        amount: "22,593,510",
+    },
+    {
+        id: "pay-2",
+        date: "۱۴۰۴/۱۰/۲۰",
+        time: "۱۲:۵۶",
+        status: "failed",
+        statusLabel: "تراکنش ناموفق",
+        amount: "4,486,008",
+        note:
+            "چنانچه مبلغ از حسابتان کم شده ولی صورت‌حساب پرداخت نشده است، مبلغ کم شده تا ۴۸ ساعت آینده به حساب بانکی‌تان برمی‌گردد.",
+    },
+    {
+        id: "pay-3",
+        date: "۱۴۰۴/۱۰/۲",
+        time: "۲۰:۵۱",
+        status: "success",
+        statusLabel: "تراکنش موفق",
+        reference: "224177797178",
+        amount: "18,224,375",
+    },
+];
+
+export const orderSections = [
+    {
+        id: "dey",
+        title: "سفارش‌های دی",
+        items: [
+            {
+                id: "ord-teknolife",
+                merchant: "تکنولایف",
+                status: "settled",
+                statusLabel: "تسویه شده",
+                amount: "31,682,400",
+                datetime: "۲۰:۵۱ - ۱۴۰۴/۱۰/۲",
+            },
+        ],
+    },
+    {
+        id: "aban",
+        title: "سفارش‌های آبان",
+        items: [
+            {
+                id: "ord-snap-market",
+                merchant: "اسنپ مارکت",
+                status: "settled",
+                statusLabel: "تسویه شده",
+                amount: "4,111,934",
+                datetime: "۲۲:۵۶ - ۱۴۰۴/۸/۸",
+            },
+        ],
+    },
+    {
+        id: "shahrivar",
+        title: "سفارش‌های شهریور",
+        items: [
+            {
+                id: "ord-snap-1",
+                merchant: "اسنپ شاپ",
+                status: "settled",
+                statusLabel: "تسویه شده",
+                amount: "7,119,900",
+                datetime: "۱۱:۱۹ - ۱۴۰۴/۶/۱۸",
+            },
+            {
+                id: "ord-snap-cancelled",
+                merchant: "اسنپ شاپ",
+                status: "cancelled",
+                statusLabel: "لغو شده",
+                amount: "5,412,900",
+                datetime: "۱۹:۳۵ - ۱۴۰۴/۶/۱۰",
+            },
+        ],
+    },
+];
+
+export const orderDetailsById = {
+    "ord-teknolife": {
+        merchant: "تکنولایف",
+        amount: "31,682,400",
+        purchaseType: "خرید قسطی",
+        status: "settled",
+        statusLabel: "تسویه شده",
+        orderNumber: "49898343",
+        registeredAt: "۲۰:۵۱ - ۱۴۰۴/۱۰/۲",
+        installments: [
+            {
+                title: "قسط اول",
+                amount: "18,224,375",
+                dueDate: "۲ دی ۱۴۰۴",
+                status: "paid",
+                statusLabel: "پرداخت‌شده",
+            },
+            {
+                title: "قسط دوم",
+                amount: "4,486,008",
+                dueDate: "۳۰ بهمن ۱۴۰۴",
+                status: "paid",
+                statusLabel: "پرداخت‌شده",
+            },
+            {
+                title: "قسط سوم",
+                amount: "4,486,008",
+                dueDate: "۲۹ اسفند ۱۴۰۴",
+                status: "paid",
+                statusLabel: "پرداخت‌شده",
+            },
+            {
+                title: "قسط چهارم",
+                amount: "4,486,008",
+                dueDate: "۳۱ فروردین ۱۴۰۵",
+                status: "paid",
+                statusLabel: "پرداخت‌شده",
+            },
+        ],
+    },
+    "ord-snap-cancelled": {
+        merchant: "اسنپ شاپ",
+        amount: "5,412,900",
+        purchaseType: "خرید قسطی",
+        status: "cancelled",
+        statusLabel: "لغو شده",
+        orderNumber: "26371505",
+        registeredAt: "۱۹:۳۵ - ۱۴۰۴/۶/۱۰",
+        installments: [
+            {
+                title: "قسط اول",
+                amount: "1,353,225",
+                dueDate: "۱۰ شهریور ۱۴۰۴",
+                status: "refunded",
+                statusLabel: "مبلغ عودت‌داده‌شده",
+            },
+            {
+                title: "قسط دوم",
+                amount: "1,353,225",
+                dueDate: "۳۰ مهر ۱۴۰۴",
+                status: "cancelled",
+                statusLabel: "تراکنش لغوشده",
+            },
+            {
+                title: "قسط سوم",
+                amount: "1,353,225",
+                dueDate: "۳۰ آبان ۱۴۰۴",
+                status: "cancelled",
+                statusLabel: "تراکنش لغوشده",
+            },
+            {
+                title: "قسط چهارم",
+                amount: "1,353,225",
+                dueDate: "۳۰ آذر ۱۴۰۴",
+                status: "cancelled",
+                statusLabel: "تراکنش لغوشده",
+            },
+        ],
+    },
+};
+
+/** جزئیات پیش‌فرض برای سفارش‌هایی که نمونهٔ کامل ندارند */
+export function getOrderDetail(orderId) {
+    return (
+        orderDetailsById[orderId] ?? {
+            merchant: "فروشگاه",
+            amount: "—",
+            purchaseType: "خرید قسطی",
+            status: "settled",
+            statusLabel: "تسویه شده",
+            orderNumber: "—",
+            registeredAt: "—",
+            installments: [],
+        }
+    );
+}

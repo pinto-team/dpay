@@ -1,6 +1,6 @@
 import AppScaffold from "../../components/AppScaffold.jsx";
 
-function LoginPage({ onNext }) {
+function LoginPage({ onNext, onOpenTerms }) {
     return (
         <AppScaffold>
             <div className="page-content">
@@ -27,7 +27,7 @@ function LoginPage({ onNext }) {
                             قبول شرایط و ادامه
                         </md-filled-button>
 
-                        <md-text-button>
+                        <md-text-button onClick={onOpenTerms}>
                             شرایط استفاده از د پی
                         </md-text-button>
                     </div>

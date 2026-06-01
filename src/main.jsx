@@ -6,6 +6,7 @@ import "./material";
 import "./styles/theme.css";
 import "./styles/font.css";
 import "./styles/App.css";
+import "./styles/home.css";
 
 import App from "./App.jsx";
 

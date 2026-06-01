@@ -1,0 +1,325 @@
+/* Home shell + M3 cards */
+
+.home-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: var(--md-sys-color-background);
+}
+
+.home-shell__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 16px 8px;
+}
+
+.home-nav-bar {
+  flex-shrink: 0;
+  width: 100%;
+  background: var(--md-sys-color-surface-container);
+}
+
+.home-tab {
+  display: grid;
+  gap: 20px;
+  padding-block-end: 16px;
+}
+
+.home-tab__title {
+  margin: 0;
+  text-align: right;
+}
+
+.home-tab--placeholder {
+  min-height: 50vh;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.home-tab__placeholder-icon {
+  font-size: 48px;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.6;
+}
+
+.home-tab__placeholder-text {
+  margin: 0;
+  max-width: 280px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Lists */
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.order-section {
+  display: grid;
+  gap: 12px;
+}
+
+.order-section__title {
+  margin: 8px 0 0;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: right;
+}
+
+/* M3 cards — padding inside web components */
+md-elevated-card.app-card,
+md-outlined-card.app-card {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  background: var(--md-sys-color-surface-container-lowest);
+}
+
+.app-card {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Status chips */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.status-chip--success {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.status-chip--error {
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+.status-chip--cancelled {
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.status-chip--neutral {
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.detail-chip {
+  display: inline-flex;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Payment card */
+.payment-card {
+  display: grid;
+  gap: 12px;
+}
+
+.payment-card__meta {
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: right;
+}
+
+.payment-card__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.payment-card__amount {
+  margin: 0;
+  text-align: left;
+  direction: ltr;
+  unicode-bidi: isolate;
+  color: var(--md-sys-color-on-surface);
+}
+
+.payment-card__currency {
+  margin-inline-start: 4px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.payment-card__reference {
+  display: grid;
+  gap: 4px;
+  text-align: right;
+}
+
+.payment-card__reference-value {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.payment-card__note {
+  margin: 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  text-align: right;
+}
+
+/* Order card */
+.order-card {
+  cursor: pointer;
+  display: grid;
+  gap: 12px;
+  transition: box-shadow 0.2s ease;
+}
+
+.order-card:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+.order-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.order-card__merchant {
+  color: var(--md-sys-color-on-surface);
+}
+
+.order-card__amount {
+  margin: 0;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.order-card__currency {
+  margin-inline-start: 4px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.order-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block-start: 4px;
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.order-card__datetime {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.order-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--md-sys-color-primary);
+}
+
+.order-card__action .material-symbols-rounded {
+  font-size: 20px;
+}
+
+/* Order details */
+.page-content--details {
+  gap: 24px;
+}
+
+.order-detail-card {
+  display: grid;
+  gap: 16px;
+}
+
+.order-detail-card__header {
+  display: grid;
+  gap: 12px;
+}
+
+.order-detail-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.order-detail-card__amount {
+  margin: 0;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.detail-meta {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  padding-block-start: 8px;
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.detail-meta__row {
+  display: grid;
+  gap: 4px;
+}
+
+.detail-meta__row dt {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.detail-meta__row dd {
+  margin: 0;
+  color: var(--md-sys-color-on-surface);
+}
+
+.detail-meta__value {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+}
+
+.installments-section {
+  display: grid;
+  gap: 12px;
+}
+
+.installments-section__title {
+  margin: 0;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.installment-card {
+  display: grid;
+  gap: 8px;
+}
+
+.installment-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.installment-card__amount {
+  margin: 0;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.installment-card__due {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: right;
+}
