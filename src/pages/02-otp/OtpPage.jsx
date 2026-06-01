@@ -1,7 +1,40 @@
-import AppScaffold from "../../components/AppScaffold.jsx";
+import { useState } from "react";
 
-function OtpPage({ onNext, onBack }) {
-    const phoneNumber = "۰۹۱۹۲۵۷۳۶۱۳";
+import OtpInput from "../../components/auth/OtpInput.jsx";
+import AppScaffold from "../../components/AppScaffold.jsx";
+import { useCountdown } from "../../hooks/useCountdown.js";
+import { validateOtp } from "../../utils/onboardingValidation.js";
+
+const RESEND_SECONDS = 59;
+
+function OtpPage({ phoneNumber = "۰۹۱۹۲۵۷۳۶۱۳", onNext, onBack }) {
+    const [otp, setOtp] = useState("");
+    const [otpError, setOtpError] = useState("");
+    const { formatted, canResend, reset } = useCountdown(RESEND_SECONDS);
+
+    const handleSubmit = () => {
+        const result = validateOtp(otp);
+        if (!result.ok) {
+            setOtpError(result.message);
+            return;
+        }
+
+        setOtpError("");
+        onNext?.();
+    };
+
+    const handleOtpChange = (value) => {
+        setOtp(value);
+        if (otpError) {
+            setOtpError("");
+        }
+    };
+
+    const handleResend = () => {
+        reset();
+        setOtp("");
+        setOtpError("");
+    };
 
     return (
         <AppScaffold showBack onBack={onBack}>
@@ -25,21 +58,27 @@ function OtpPage({ onNext, onBack }) {
                         </md-text-button>
                     </div>
 
-                    <md-outlined-text-field
-                        class="full-width otp-code-field"
-                        label="کد تأیید"
-                        type="tel"
-                        inputmode="numeric"
-                        autocomplete="one-time-code"
-                        maxlength="5"
-                    ></md-outlined-text-field>
+                    <OtpInput
+                        value={otp}
+                        onChange={handleOtpChange}
+                        error={Boolean(otpError)}
+                        errorMessage={otpError}
+                    />
 
-                    <p className="helper-text md-typescale-body-medium">
-                        ارسال دوبارهٔ کد تا ۰:۵۸
-                    </p>
+                    <div className="otp-resend">
+                        {canResend ? (
+                            <md-text-button onClick={handleResend}>
+                                ارسال دوبارهٔ کد
+                            </md-text-button>
+                        ) : (
+                            <p className="helper-text md-typescale-body-medium">
+                                ارسال دوبارهٔ کد تا {formatted}
+                            </p>
+                        )}
+                    </div>
 
                     <div className="action-stack">
-                        <md-filled-button class="full-width" onClick={onNext}>
+                        <md-filled-button class="full-width" onClick={handleSubmit}>
                             تأیید و ادامه
                         </md-filled-button>
                     </div>

@@ -37,7 +37,7 @@ function AccountSection({ title, items }) {
     );
 }
 
-function AccountTab() {
+function AccountTab({ onLogout }) {
     return (
         <div className="home-tab account-tab">
             <md-elevated-card class="app-card">
@@ -96,11 +96,13 @@ function AccountTab() {
                 ]}
             />
 
-            <md-outlined-card class="app-card account-logout-card">
-                <button type="button" className="account-logout">
-                    خروج از حساب کاربری
-                </button>
-            </md-outlined-card>
+            <button
+                type="button"
+                className="account-logout md-typescale-label-large"
+                onClick={onLogout}
+            >
+                خروج از حساب کاربری
+            </button>
         </div>
     );
 }

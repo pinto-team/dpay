@@ -6,16 +6,15 @@ import BasicInfoPage from "./pages/03-basic-info/BasicInfoPage.jsx";
 import TermsPage from "./pages/04-terms/TermsPage.jsx";
 import HomePage from "./pages/05-home/HomePage.jsx";
 
-const pages = [LoginPage, OtpPage, BasicInfoPage, HomePage];
+const LAST_PAGE_INDEX = 3;
 
 function App() {
     const [pageIndex, setPageIndex] = useState(0);
     const [showTerms, setShowTerms] = useState(false);
-
-    const CurrentPage = pages[pageIndex];
+    const [phoneNumber, setPhoneNumber] = useState("");
 
     const goNext = () => {
-        setPageIndex((current) => Math.min(current + 1, pages.length - 1));
+        setPageIndex((current) => Math.min(current + 1, LAST_PAGE_INDEX));
     };
 
     const goBack = () => {
@@ -34,11 +33,41 @@ function App() {
 
     return (
         <main className="app-shell">
-            <CurrentPage
-                onNext={goNext}
-                onBack={goBack}
-                onOpenTerms={() => setShowTerms(true)}
-            />
+            {pageIndex === 0 ? (
+                <LoginPage
+                    initialPhone={phoneNumber}
+                    onNext={(phone) => {
+                        setPhoneNumber(phone);
+                        goNext();
+                    }}
+                    onOpenTerms={() => setShowTerms(true)}
+                />
+            ) : null}
+
+            {pageIndex === 1 ? (
+                <OtpPage
+                    phoneNumber={phoneNumber}
+                    onNext={goNext}
+                    onBack={goBack}
+                />
+            ) : null}
+
+            {pageIndex === 2 ? (
+                <BasicInfoPage
+                    phoneNumber={phoneNumber}
+                    onNext={goNext}
+                    onBack={goBack}
+                />
+            ) : null}
+
+            {pageIndex === 3 ? (
+                <HomePage
+                    onLogout={() => {
+                        setPhoneNumber("");
+                        setPageIndex(0);
+                    }}
+                />
+            ) : null}
         </main>
     );
 }

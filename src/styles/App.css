@@ -138,6 +138,73 @@ md-outlined-text-field.full-width {
   width: 100%;
 }
 
+md-outlined-text-field.onboarding-field {
+  background: #ffffff;
+  border-radius: 12px;
+  --md-sys-color-surface: #ffffff;
+}
+
+.birth-date-field {
+  direction: ltr;
+  text-align: left;
+}
+
+.field-hint {
+  margin: -12px 0 0;
+  text-align: right;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.otp-field {
+  display: grid;
+  gap: 8px;
+}
+
+.otp-input {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.otp-input__cell {
+  width: 100%;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--md-sys-color-on-surface);
+  text-align: center;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.otp-input__cell:focus {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 2px rgb(17 89 252 / 12%);
+}
+
+.otp-input--error .otp-input__cell {
+  border-color: var(--md-sys-color-error);
+}
+
+.otp-input--error .otp-input__cell:focus {
+  box-shadow: 0 0 0 2px rgb(249 68 31 / 12%);
+}
+
+.otp-field__error {
+  margin: 0;
+  text-align: center;
+  color: var(--md-sys-color-error);
+}
+
+.otp-resend {
+  margin-top: -8px;
+  text-align: center;
+}
+
 md-filled-button {
   height: 56px;
   --md-filled-button-container-color: var(--md-sys-color-primary);
@@ -155,6 +222,8 @@ md-text-button {
 
 md-icon-button {
   --md-icon-button-icon-color: var(--md-sys-color-on-surface-variant);
+  --md-icon-button-hover-state-layer-color: var(--md-sys-color-primary);
+  --md-icon-button-pressed-state-layer-color: var(--md-sys-color-primary);
 }
 
 .terms-text {
@@ -176,12 +245,8 @@ md-icon-button {
 }
 
 /* OTP */
-.otp-code-field {
-  direction: ltr;
-}
-
 .helper-text {
-  margin-top: -8px;
+  margin: 0;
   text-align: center;
 }
 

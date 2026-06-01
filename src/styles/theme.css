@@ -91,6 +91,17 @@
     --md-navigation-bar-inactive-hover-label-text-color: #45474a;
     --md-navigation-bar-inactive-focus-icon-color: #45474a;
     --md-navigation-bar-inactive-focus-label-text-color: #45474a;
+    --md-navigation-bar-inactive-pressed-icon-color: #74777c;
+    --md-navigation-bar-inactive-pressed-label-text-color: #74777c;
+    --md-navigation-bar-active-hover-state-layer-color: #1159fc;
+    --md-navigation-bar-active-pressed-state-layer-color: #1159fc;
+    --md-navigation-bar-active-focus-state-layer-color: #1159fc;
+    --md-navigation-bar-inactive-hover-state-layer-color: #1159fc;
+    --md-navigation-bar-inactive-pressed-state-layer-color: #1159fc;
+    --md-navigation-bar-inactive-focus-state-layer-color: #1159fc;
+    --md-navigation-bar-hover-state-layer-opacity: 0.06;
+    --md-navigation-bar-pressed-state-layer-opacity: 0.1;
+    --md-navigation-bar-focus-state-layer-opacity: 0.08;
 
     --md-filled-button-container-color: #1159fc;
     --md-filled-button-label-text-color: #ffffff;
@@ -110,10 +121,33 @@
     --md-icon-button-icon-color: #45474a;
     --md-icon-button-hover-icon-color: #1159fc;
     --md-icon-button-focus-icon-color: #1159fc;
+    --md-icon-button-pressed-icon-color: #1159fc;
+    --md-icon-button-hover-state-layer-color: #1159fc;
+    --md-icon-button-pressed-state-layer-color: #1159fc;
+    --md-icon-button-hover-state-layer-opacity: 0.06;
+    --md-icon-button-pressed-state-layer-opacity: 0.1;
+
+    --md-filled-button-hover-state-layer-color: #ffffff;
+    --md-filled-button-pressed-state-layer-color: #ffffff;
+    --md-filled-button-hover-state-layer-opacity: 0.1;
+    --md-filled-button-pressed-state-layer-opacity: 0.14;
+
+    --md-outlined-button-hover-state-layer-color: #1159fc;
+    --md-outlined-button-pressed-state-layer-color: #1159fc;
+    --md-outlined-button-hover-state-layer-opacity: 0.06;
+    --md-outlined-button-pressed-state-layer-opacity: 0.1;
+
+    --md-text-button-hover-state-layer-color: #1159fc;
+    --md-text-button-pressed-state-layer-color: #1159fc;
+    --md-text-button-hover-state-layer-opacity: 0.06;
+    --md-text-button-pressed-state-layer-opacity: 0.1;
 
     --md-elevated-card-container-color: #ffffff;
 
     --md-outlined-text-field-focus-outline-color: #1159fc;
     --md-outlined-text-field-focus-label-text-color: #1159fc;
     --md-outlined-text-field-caret-color: #1159fc;
+    --md-outlined-text-field-outline-color: #dfe1e5;
+    --md-outlined-text-field-hover-outline-color: #c9cbcf;
+    --md-outlined-text-field-container-shape: 12px;
 }

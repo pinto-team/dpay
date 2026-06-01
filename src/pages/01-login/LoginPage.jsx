@@ -1,6 +1,49 @@
-import AppScaffold from "../../components/AppScaffold.jsx";
+import { useEffect, useRef } from "react";
 
-function LoginPage({ onNext, onOpenTerms }) {
+import AppScaffold from "../../components/AppScaffold.jsx";
+import { digitsOnly, toPersianDigits } from "../../utils/persianDigits.js";
+import { validateMobile } from "../../utils/onboardingValidation.js";
+
+function LoginPage({ onNext, onOpenTerms, initialPhone = "" }) {
+    const phoneRef = useRef(null);
+
+    useEffect(() => {
+        const field = phoneRef.current;
+        if (!field) {
+            return undefined;
+        }
+
+        if (initialPhone) {
+            field.value = initialPhone;
+        }
+
+        const handleInput = () => {
+            const raw = digitsOnly(field.value).slice(0, 11);
+            field.value = toPersianDigits(raw);
+            field.error = false;
+            field.errorText = "";
+        };
+
+        field.addEventListener("input", handleInput);
+        return () => field.removeEventListener("input", handleInput);
+    }, [initialPhone]);
+
+    const handleSubmit = () => {
+        const field = phoneRef.current;
+        if (!field) {
+            return;
+        }
+
+        const result = validateMobile(field.value);
+        if (!result.ok) {
+            field.error = true;
+            field.errorText = result.message;
+            return;
+        }
+
+        onNext?.(result.normalized);
+    };
+
     return (
         <AppScaffold>
             <div className="page-content">
@@ -16,14 +59,16 @@ function LoginPage({ onNext, onOpenTerms }) {
 
                 <div className="form-stack">
                     <md-outlined-text-field
-                        class="full-width"
+                        ref={phoneRef}
+                        class="full-width onboarding-field"
                         label="شماره موبایل"
                         type="tel"
                         inputmode="tel"
+                        autocomplete="tel"
                     ></md-outlined-text-field>
 
                     <div className="action-stack">
-                        <md-filled-button class="full-width" onClick={onNext}>
+                        <md-filled-button class="full-width" onClick={handleSubmit}>
                             قبول شرایط و ادامه
                         </md-filled-button>
 

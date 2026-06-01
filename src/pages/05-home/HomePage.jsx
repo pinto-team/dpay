@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
+import HomeBottomNav from "../../components/home/HomeBottomNav.jsx";
 import HomePageHeader from "../../components/home/HomePageHeader.jsx";
 import HomeShell from "../../components/home/HomeShell.jsx";
 import OrderDetailsView from "./OrderDetailsView.jsx";
@@ -18,78 +19,21 @@ const TAB = {
     PROFILE: 3,
 };
 
-function HomePage() {
-    const navRef = useRef(null);
+function HomePage({ onLogout }) {
     const [activeTab, setActiveTab] = useState(TAB.HOME);
     const [selectedOrderId, setSelectedOrderId] = useState(null);
     const [inStoreScanOpen, setInStoreScanOpen] = useState(false);
     const [storeDetailOpen, setStoreDetailOpen] = useState(false);
 
-    useEffect(() => {
-        const bar = navRef.current;
-        if (!bar) return;
-
-        const handleActivated = (event) => {
-            setActiveTab(event.detail.activeIndex);
-            setSelectedOrderId(null);
-            setInStoreScanOpen(false);
-            setStoreDetailOpen(false);
-        };
-
-        bar.addEventListener("navigation-bar-activated", handleActivated);
-        return () => {
-            bar.removeEventListener("navigation-bar-activated", handleActivated);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (navRef.current) {
-            navRef.current.activeIndex = activeTab;
-        }
-    }, [activeTab]);
+    const handleTabChange = (index) => {
+        setActiveTab(index);
+        setSelectedOrderId(null);
+        setInStoreScanOpen(false);
+        setStoreDetailOpen(false);
+    };
 
     const navBar = (
-        <md-navigation-bar
-            ref={navRef}
-            class="home-nav-bar"
-            aria-label="ناوبری اصلی"
-        >
-            <md-navigation-tab label="خانه">
-                <span slot="inactive-icon" className="material-symbols-rounded">
-                    home
-                </span>
-                <span slot="active-icon" className="material-symbols-rounded">
-                    home
-                </span>
-            </md-navigation-tab>
-
-            <md-navigation-tab label="سفارش‌ها">
-                <span slot="inactive-icon" className="material-symbols-rounded">
-                    receipt_long
-                </span>
-                <span slot="active-icon" className="material-symbols-rounded">
-                    receipt_long
-                </span>
-            </md-navigation-tab>
-
-            <md-navigation-tab label="پرداخت‌ها">
-                <span slot="inactive-icon" className="material-symbols-rounded">
-                    payments
-                </span>
-                <span slot="active-icon" className="material-symbols-rounded">
-                    payments
-                </span>
-            </md-navigation-tab>
-
-            <md-navigation-tab label="حساب کاربری">
-                <span slot="inactive-icon" className="material-symbols-rounded">
-                    person
-                </span>
-                <span slot="active-icon" className="material-symbols-rounded">
-                    person
-                </span>
-            </md-navigation-tab>
-        </md-navigation-bar>
+        <HomeBottomNav activeIndex={activeTab} onChange={handleTabChange} />
     );
 
     const header = inStoreScanOpen ? (
@@ -180,7 +124,7 @@ function HomePage() {
             case TAB.PAYMENTS:
                 return <PaymentsTab />;
             case TAB.PROFILE:
-                return <AccountTab />;
+                return <AccountTab onLogout={onLogout} />;
             default:
                 return null;
         }
