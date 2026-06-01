@@ -1,90 +1,134 @@
-import AppScaffold from "../../components/AppScaffold.jsx";
 import StatusChip from "../../components/home/StatusChip.jsx";
 import { getOrderDetail } from "../../data/homeMock.js";
 
-function OrderDetailsView({ orderId, onBack }) {
+function OrderDetailsView({ orderId }) {
     const order = getOrderDetail(orderId);
+    const purchaseChipClass =
+        order.purchaseMode === "payNow"
+            ? "detail-chip--pay-now"
+            : "detail-chip--bnpl";
 
     return (
-        <AppScaffold showBack onBack={onBack}>
-            <div className="page-content page-content--details">
-                <md-elevated-card class="app-card order-detail-card">
-                    <div className="order-detail-card__header">
-                        <h2 className="content-title md-typescale-headline-small">
-                            {order.merchant}
-                        </h2>
-                        <div className="order-detail-card__chips">
-                            <span className="detail-chip md-typescale-label-medium">
-                                {order.purchaseType}
-                            </span>
-                            <StatusChip
-                                status={order.status}
-                                label={order.statusLabel}
-                            />
-                        </div>
-                    </div>
-
-                    <p className="order-detail-card__amount md-typescale-headline-medium">
-                        {order.amount}
-                        <span className="order-card__currency md-typescale-body-large">
-                            تومان
-                        </span>
+        <div className="page-content page-content--details">
+            <md-elevated-card class="app-card order-detail-card">
+                <div className="order-detail-card__head">
+                    <p className="order-detail-card__merchant md-typescale-title-large">
+                        {order.merchant}
                     </p>
 
-                    <dl className="detail-meta">
+                    <div className="order-detail-card__chips">
+                        <span
+                            className={`detail-chip md-typescale-label-medium ${purchaseChipClass}`}
+                        >
+                            {order.purchaseType}
+                        </span>
+                        <StatusChip
+                            status={order.status}
+                            label={order.statusLabel}
+                        />
+                    </div>
+                </div>
+
+                <div className="order-detail-card__body">
+                    <div className="order-detail-card__price">
+                        <span className="order-detail-card__price-label md-typescale-body-medium">
+                            قیمت کل سفارش
+                        </span>
+                        <p className="order-detail-card__amount md-typescale-title-medium">
+                            <span className="amount-currency md-typescale-body-medium">
+                                تومان
+                            </span>
+                            {order.amount}
+                        </p>
+                    </div>
+
+                    <dl className="detail-meta detail-meta--in-card">
                         <div className="detail-meta__row">
-                            <dt className="md-typescale-body-medium">شمارهٔ سفارش:</dt>
+                            <dt className="md-typescale-body-medium">
+                                شمارهٔ سفارش
+                            </dt>
                             <dd className="detail-meta__value md-typescale-body-medium">
                                 {order.orderNumber}
                             </dd>
                         </div>
                         <div className="detail-meta__row">
                             <dt className="md-typescale-body-medium">
-                                زمان ثبت سفارش:
+                                زمان ثبت سفارش
                             </dt>
                             <dd className="md-typescale-body-medium">
                                 {order.registeredAt}
                             </dd>
                         </div>
                     </dl>
-                </md-elevated-card>
+                </div>
+            </md-elevated-card>
 
-                {order.installments.length > 0 ? (
-                    <section className="installments-section">
-                        <h3 className="installments-section__title md-typescale-title-medium">
-                            اقساط سفارش
-                        </h3>
+            {order.paymentInfo?.length > 0 ? (
+                <section className="installments-section">
+                    <h3 className="installments-section__title md-typescale-title-medium">
+                        اطلاعات پرداخت
+                    </h3>
 
-                        <ul className="card-list">
-                            {order.installments.map((installment) => (
-                                <li key={installment.title}>
-                                    <md-outlined-card class="app-card installment-card">
-                                        <div className="installment-card__header">
-                                            <span className="md-typescale-title-small">
-                                                {installment.title}
+                    <md-outlined-card class="app-card payment-info-card">
+                        <dl className="detail-meta detail-meta--compact">
+                            {order.paymentInfo.map((row) => (
+                                <div className="detail-meta__row" key={row.label}>
+                                    <dt className="md-typescale-body-medium">
+                                        {row.label}
+                                    </dt>
+                                    <dd
+                                        className={`md-typescale-body-medium ${row.ltr ? "detail-meta__value" : ""}`}
+                                    >
+                                        {row.value}
+                                    </dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </md-outlined-card>
+                </section>
+            ) : null}
+
+            {order.installments.length > 0 ? (
+                <section className="installments-section">
+                    <h3 className="installments-section__title md-typescale-title-medium">
+                        اقساط سفارش
+                    </h3>
+
+                    <ul className="card-list">
+                        {order.installments.map((installment) => (
+                            <li key={installment.title}>
+                                <md-outlined-card class="app-card installment-card">
+                                    <div className="installment-card__header">
+                                        <span className="installment-card__title md-typescale-title-small">
+                                            {installment.title}
+                                        </span>
+                                        <StatusChip
+                                            status={installment.status}
+                                            label={installment.statusLabel}
+                                        />
+                                    </div>
+
+                                    <div className="installment-card__row">
+                                        <p className="installment-card__due md-typescale-body-medium">
+                                            <span className="installment-card__meta-label">
+                                                تاریخ سررسید:
                                             </span>
-                                            <StatusChip
-                                                status={installment.status}
-                                                label={installment.statusLabel}
-                                            />
-                                        </div>
-                                        <p className="installment-card__amount md-typescale-title-medium">
-                                            {installment.amount}
-                                            <span className="order-card__currency md-typescale-body-small">
+                                            {installment.dueDate}
+                                        </p>
+                                        <p className="installment-card__amount md-typescale-title-small">
+                                            <span className="amount-currency md-typescale-label-medium">
                                                 تومان
                                             </span>
+                                            {installment.amount}
                                         </p>
-                                        <p className="installment-card__due md-typescale-body-medium">
-                                            تاریخ سررسید: {installment.dueDate}
-                                        </p>
-                                    </md-outlined-card>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                ) : null}
-            </div>
-        </AppScaffold>
+                                    </div>
+                                </md-outlined-card>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            ) : null}
+        </div>
     );
 }
 

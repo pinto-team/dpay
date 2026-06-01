@@ -1,37 +1,65 @@
-/* Home shell + M3 cards */
+/* ─── Home shell: fixed nav + scrollable list ─── */
 
-.home-shell {
+.home-shell.screen {
+  height: 100svh;
+  max-height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100svh;
-  background: var(--md-sys-color-background);
+  background: var(--md-sys-color-surface);
+}
+
+.top-bar--home {
+  flex-shrink: 0;
 }
 
 .home-shell__content {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
-  padding: 16px 16px 8px;
+  overscroll-behavior: contain;
+  padding: 8px 16px 16px;
+  -webkit-overflow-scrolling: touch;
 }
 
-.home-nav-bar {
+.home-nav-bar-wrap {
   flex-shrink: 0;
   width: 100%;
+  z-index: 10;
   background: var(--md-sys-color-surface-container);
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* M3 navigation bar — override بنفش پیش‌فرض کتابخانه */
+md-navigation-bar.home-nav-bar {
+  --md-navigation-bar-container-color: var(--md-sys-color-surface-container);
+  --md-navigation-bar-active-indicator-color: var(--md-sys-color-primary-container);
+  --md-navigation-bar-active-icon-color: var(--md-sys-color-primary);
+  --md-navigation-bar-active-label-text-color: var(--md-sys-color-primary);
+  --md-navigation-bar-inactive-icon-color: var(--md-sys-color-on-surface-variant);
+  --md-navigation-bar-inactive-label-text-color: var(--md-sys-color-on-surface-variant);
+  width: 100%;
+}
+
+/* عنوان صفحه در بدنه (هم‌سبک تیترهای فلو ورود، نه headline) */
+.home-page-heading {
+  margin: 0;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--md-sys-color-on-surface);
 }
 
 .home-tab {
   display: grid;
-  gap: 20px;
-  padding-block-end: 16px;
-}
-
-.home-tab__title {
-  margin: 0;
-  text-align: right;
+  gap: 24px;
+  padding-block-end: 8px;
 }
 
 .home-tab--placeholder {
-  min-height: 50vh;
+  min-height: 45vh;
   place-content: center;
   justify-items: center;
   text-align: center;
@@ -41,7 +69,7 @@
 .home-tab__placeholder-icon {
   font-size: 48px;
   color: var(--md-sys-color-on-surface-variant);
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 .home-tab__placeholder-text {
@@ -50,13 +78,14 @@
   color: var(--md-sys-color-on-surface-variant);
 }
 
-/* Lists */
+/* ─── Lists ─── */
+
 .card-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 .order-section {
@@ -65,12 +94,13 @@
 }
 
 .order-section__title {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   color: var(--md-sys-color-on-surface-variant);
   text-align: right;
 }
 
-/* M3 cards — padding inside web components */
+/* ─── M3 cards ─── */
+
 md-elevated-card.app-card,
 md-outlined-card.app-card {
   display: block;
@@ -80,22 +110,50 @@ md-outlined-card.app-card {
 }
 
 .app-card {
-  padding: 16px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-/* Status chips */
+.order-detail-card.app-card {
+  padding: 0;
+}
+
+.amount-currency {
+  margin-inline-start: 4px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-weight: 400;
+}
+
+/* ─── Status chips (معنای M3) ─── */
+
 .status-chip {
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 8px;
   white-space: nowrap;
+  font-weight: 500;
 }
 
+.status-chip--settled,
 .status-chip--success {
+  background: var(--md-sys-color-success-container);
+  color: var(--md-sys-color-on-success-container);
+}
+
+.status-chip--pay-now {
   background: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
+}
+
+.status-chip--bnpl-active {
+  background: var(--md-sys-color-bnpl-active-container);
+  color: var(--md-sys-color-on-bnpl-active-container);
+}
+
+.status-chip--upcoming {
+  background: var(--md-sys-color-upcoming-container);
+  color: var(--md-sys-color-on-upcoming-container);
 }
 
 .status-chip--error {
@@ -104,39 +162,60 @@ md-outlined-card.app-card {
 }
 
 .status-chip--cancelled {
-  background: var(--md-sys-color-surface-container-high);
-  color: var(--md-sys-color-on-surface-variant);
+  background: var(--md-sys-color-cancelled-container);
+  color: var(--md-sys-color-on-cancelled-container);
 }
 
 .status-chip--neutral {
-  background: var(--md-sys-color-surface-variant);
+  background: var(--md-sys-color-surface-container-high);
   color: var(--md-sys-color-on-surface-variant);
 }
 
 .detail-chip {
   display: inline-flex;
-  padding: 4px 12px;
+  align-items: center;
+  padding: 4px 10px;
   border-radius: 8px;
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.detail-chip--pay-now {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.detail-chip--bnpl {
   background: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
 }
 
-/* Payment card */
-.payment-card {
-  display: grid;
+.payment-info-card {
+  display: block;
+}
+
+.detail-meta--compact {
   gap: 12px;
 }
 
+/* ─── Payment card ─── */
+
+.payment-card {
+  display: grid;
+  gap: 16px;
+}
+
 .payment-card__meta {
+  margin: 0;
   color: var(--md-sys-color-on-surface-variant);
   text-align: right;
 }
 
-.payment-card__row {
+.payment-card__main {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
 }
 
 .payment-card__amount {
@@ -144,42 +223,47 @@ md-outlined-card.app-card {
   text-align: left;
   direction: ltr;
   unicode-bidi: isolate;
+  font-weight: 700;
   color: var(--md-sys-color-on-surface);
 }
 
-.payment-card__currency {
-  margin-inline-start: 4px;
-  color: var(--md-sys-color-on-surface-variant);
+.payment-card__reference {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 6px 8px;
+  padding-block-start: 4px;
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
 }
 
-.payment-card__reference {
-  display: grid;
-  gap: 4px;
-  text-align: right;
+.payment-card__reference-label {
+  color: var(--md-sys-color-on-surface-variant);
+  flex-shrink: 0;
 }
 
 .payment-card__reference-value {
   direction: ltr;
   unicode-bidi: isolate;
-  text-align: right;
   color: var(--md-sys-color-on-surface);
+  font-weight: 500;
 }
 
 .payment-card__note {
   margin: 0;
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 12px;
   background: var(--md-sys-color-error-container);
   color: var(--md-sys-color-on-error-container);
   text-align: right;
 }
 
-/* Order card */
+/* ─── Order card ─── */
+
 .order-card {
   cursor: pointer;
   display: grid;
-  gap: 12px;
-  transition: box-shadow 0.2s ease;
+  gap: 0;
 }
 
 .order-card:focus-visible {
@@ -187,34 +271,49 @@ md-outlined-card.app-card {
   outline-offset: 2px;
 }
 
-.order-card__header {
+.order-card__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
+  padding-block-end: 14px;
 }
 
 .order-card__merchant {
   color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+  text-align: right;
+  min-width: 0;
+}
+
+.order-card__price-row {
+  display: flex;
+  justify-content: flex-start;
+  padding-block-end: 14px;
 }
 
 .order-card__amount {
   margin: 0;
-  text-align: right;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-weight: 700;
   color: var(--md-sys-color-on-surface);
 }
 
-.order-card__currency {
-  margin-inline-start: 4px;
-  color: var(--md-sys-color-on-surface-variant);
+.order-card__amount .amount-currency {
+  margin-inline-start: 0;
+  font-weight: 400;
 }
 
 .order-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding-block-start: 4px;
+  gap: 12px;
+  padding-block-start: 14px;
   border-block-start: 1px solid var(--md-sys-color-outline-variant);
 }
 
@@ -233,65 +332,110 @@ md-outlined-card.app-card {
   font-size: 20px;
 }
 
-/* Order details */
+/* ─── Order details ─── */
+
 .page-content--details {
   gap: 24px;
 }
 
 .order-detail-card {
   display: grid;
-  gap: 16px;
+  gap: 0;
+  padding: 0;
 }
 
-.order-detail-card__header {
+.order-detail-card__head {
   display: grid;
   gap: 12px;
+  padding: 20px 20px 16px;
+}
+
+.order-detail-card__merchant {
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
 }
 
 .order-detail-card__chips {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
+}
+
+.order-detail-card__body {
+  display: grid;
+  gap: 16px;
+  padding: 16px 20px 20px;
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.order-detail-card__price {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.order-detail-card__price-label {
+  flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
 .order-detail-card__amount {
   margin: 0;
-  text-align: right;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-weight: 700;
   color: var(--md-sys-color-on-surface);
+}
+
+.order-detail-card__amount .amount-currency {
+  margin-inline-start: 0;
+  font-weight: 400;
 }
 
 .detail-meta {
   margin: 0;
   display: grid;
   gap: 12px;
-  padding-block-start: 8px;
-  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.detail-meta--in-card {
+  gap: 10px;
 }
 
 .detail-meta__row {
-  display: grid;
-  gap: 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .detail-meta__row dt {
   margin: 0;
+  flex-shrink: 0;
   color: var(--md-sys-color-on-surface-variant);
 }
 
 .detail-meta__row dd {
   margin: 0;
+  text-align: left;
   color: var(--md-sys-color-on-surface);
 }
 
 .detail-meta__value {
   direction: ltr;
   unicode-bidi: isolate;
-  text-align: right;
 }
 
 .installments-section {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 .installments-section__title {
@@ -302,24 +446,56 @@ md-outlined-card.app-card {
 
 .installment-card {
   display: grid;
-  gap: 8px;
+  gap: 0;
 }
 
 .installment-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
+  padding-block-end: 14px;
 }
 
-.installment-card__amount {
-  margin: 0;
-  text-align: right;
+.installment-card__title {
   color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+}
+
+.installment-card__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block-start: 16px;
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .installment-card__due {
   margin: 0;
-  color: var(--md-sys-color-on-surface-variant);
   text-align: right;
+  color: var(--md-sys-color-on-surface);
+  flex: 1;
+  min-width: 0;
+}
+
+.installment-card__meta-label {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.installment-card__amount {
+  margin: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.installment-card__amount .amount-currency {
+  margin-inline-start: 0;
+  font-weight: 400;
 }

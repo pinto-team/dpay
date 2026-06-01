@@ -1,4 +1,4 @@
-/** دادهٔ نمونه — فقط برای دمو UI */
+/** دادهٔ نمونه — پوشش حالت‌های پرداخت */
 
 export const payments = [
     {
@@ -51,12 +51,12 @@ export const orderSections = [
         title: "سفارش‌های آبان",
         items: [
             {
-                id: "ord-snap-market",
-                merchant: "اسنپ مارکت",
-                status: "settled",
-                statusLabel: "تسویه شده",
-                amount: "4,111,934",
-                datetime: "۲۲:۵۶ - ۱۴۰۴/۸/۸",
+                id: "ord-paynow",
+                merchant: "افق کوروش",
+                status: "payNow",
+                statusLabel: "پرداخت شده",
+                amount: "2,847,500",
+                datetime: "۱۴:۲۲ - ۱۴۰۴/۸/۱۵",
             },
         ],
     },
@@ -65,16 +65,16 @@ export const orderSections = [
         title: "سفارش‌های شهریور",
         items: [
             {
-                id: "ord-snap-1",
-                merchant: "اسنپ شاپ",
-                status: "settled",
-                statusLabel: "تسویه شده",
-                amount: "7,119,900",
+                id: "ord-bnpl-active",
+                merchant: "سوپرمارکت ادیب",
+                status: "bnplActive",
+                statusLabel: "اقساط فعال",
+                amount: "5,960,000",
                 datetime: "۱۱:۱۹ - ۱۴۰۴/۶/۱۸",
             },
             {
                 id: "ord-snap-cancelled",
-                merchant: "اسنپ شاپ",
+                merchant: "موبایل کیمیبا",
                 status: "cancelled",
                 statusLabel: "لغو شده",
                 amount: "5,412,900",
@@ -88,7 +88,8 @@ export const orderDetailsById = {
     "ord-teknolife": {
         merchant: "تکنولایف",
         amount: "31,682,400",
-        purchaseType: "خرید قسطی",
+        purchaseType: "خرید اقساطی",
+        purchaseMode: "bnpl",
         status: "settled",
         statusLabel: "تسویه شده",
         orderNumber: "49898343",
@@ -124,10 +125,70 @@ export const orderDetailsById = {
             },
         ],
     },
+
+    "ord-paynow": {
+        merchant: "افق کوروش",
+        amount: "2,847,500",
+        purchaseType: "پرداخت الان",
+        purchaseMode: "payNow",
+        status: "payNow",
+        statusLabel: "پرداخت شده",
+        orderNumber: "78120456",
+        registeredAt: "۱۴:۲۰ - ۱۴۰۴/۸/۱۵",
+        installments: [],
+        paymentInfo: [
+            { label: "روش پرداخت", value: "کارت بانکی" },
+            { label: "شماره پیگیری", value: "384920175638", ltr: true },
+            { label: "زمان پرداخت", value: "۱۴:۲۲ - ۱۴۰۴/۸/۱۵" },
+        ],
+    },
+
+    "ord-bnpl-active": {
+        merchant: "سوپرمارکت ادیب",
+        amount: "5,960,000",
+        purchaseType: "خرید اقساطی",
+        purchaseMode: "bnpl",
+        status: "bnplActive",
+        statusLabel: "اقساط فعال",
+        orderNumber: "35621908",
+        registeredAt: "۱۱:۱۹ - ۱۴۰۴/۶/۱۸",
+        installments: [
+            {
+                title: "قسط اول",
+                amount: "1,490,000",
+                dueDate: "۲۰ شهریور ۱۴۰۴",
+                status: "paid",
+                statusLabel: "پرداخت‌شده",
+            },
+            {
+                title: "قسط دوم",
+                amount: "1,490,000",
+                dueDate: "۲۰ مهر ۱۴۰۴",
+                status: "upcoming",
+                statusLabel: "سررسید نزدیک",
+            },
+            {
+                title: "قسط سوم",
+                amount: "1,490,000",
+                dueDate: "۲۰ آبان ۱۴۰۴",
+                status: "upcoming",
+                statusLabel: "در انتظار پرداخت",
+            },
+            {
+                title: "قسط چهارم",
+                amount: "1,490,000",
+                dueDate: "۲۰ آذر ۱۴۰۴",
+                status: "upcoming",
+                statusLabel: "در انتظار پرداخت",
+            },
+        ],
+    },
+
     "ord-snap-cancelled": {
-        merchant: "اسنپ شاپ",
+        merchant: "موبایل کیمیبا",
         amount: "5,412,900",
-        purchaseType: "خرید قسطی",
+        purchaseType: "خرید اقساطی",
+        purchaseMode: "bnpl",
         status: "cancelled",
         statusLabel: "لغو شده",
         orderNumber: "26371505",
@@ -165,13 +226,13 @@ export const orderDetailsById = {
     },
 };
 
-/** جزئیات پیش‌فرض برای سفارش‌هایی که نمونهٔ کامل ندارند */
 export function getOrderDetail(orderId) {
     return (
         orderDetailsById[orderId] ?? {
             merchant: "فروشگاه",
             amount: "—",
-            purchaseType: "خرید قسطی",
+            purchaseType: "خرید اقساطی",
+            purchaseMode: "bnpl",
             status: "settled",
             statusLabel: "تسویه شده",
             orderNumber: "—",

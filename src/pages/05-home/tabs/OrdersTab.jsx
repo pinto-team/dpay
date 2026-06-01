@@ -4,9 +4,7 @@ import { orderSections } from "../../../data/homeMock.js";
 function OrdersTab({ onOpenOrder }) {
     return (
         <div className="home-tab">
-            <h2 className="home-tab__title content-title md-typescale-headline-medium">
-                سفارش‌ها
-            </h2>
+            <h2 className="home-page-heading">سفارش‌ها</h2>
 
             {orderSections.map((section) => (
                 <section key={section.id} className="order-section">

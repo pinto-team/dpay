@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 
+import HomeShell from "../../components/home/HomeShell.jsx";
 import OrderDetailsView from "./OrderDetailsView.jsx";
 import OrdersTab from "./tabs/OrdersTab.jsx";
 import PaymentsTab from "./tabs/PaymentsTab.jsx";
 import PlaceholderTab from "./tabs/PlaceholderTab.jsx";
 
 const TAB = {
-    ORDERS: 0,
-    PAYMENTS: 1,
-    STORES: 2,
+    HOME: 0,
+    ORDERS: 1,
+    PAYMENTS: 2,
     PROFILE: 3,
 };
 
 function HomePage() {
     const navRef = useRef(null);
-    const [activeTab, setActiveTab] = useState(TAB.ORDERS);
+    const [activeTab, setActiveTab] = useState(TAB.HOME);
     const [selectedOrderId, setSelectedOrderId] = useState(null);
 
     useEffect(() => {
@@ -38,80 +39,102 @@ function HomePage() {
         }
     }, [activeTab]);
 
-    if (selectedOrderId) {
-        return (
-            <OrderDetailsView
-                orderId={selectedOrderId}
-                onBack={() => setSelectedOrderId(null)}
-            />
-        );
-    }
+    const navBar = (
+        <md-navigation-bar
+            ref={navRef}
+            class="home-nav-bar"
+            aria-label="ناوبری اصلی"
+        >
+            <md-navigation-tab label="خانه">
+                <span slot="inactive-icon" className="material-symbols-rounded">
+                    home
+                </span>
+                <span slot="active-icon" className="material-symbols-rounded">
+                    home
+                </span>
+            </md-navigation-tab>
 
-    return (
-        <div className="home-shell screen">
-            <main className="home-shell__content">
-                {activeTab === TAB.ORDERS ? (
-                    <OrdersTab onOpenOrder={setSelectedOrderId} />
-                ) : null}
-                {activeTab === TAB.PAYMENTS ? <PaymentsTab /> : null}
-                {activeTab === TAB.STORES ? (
+            <md-navigation-tab label="سفارش‌ها">
+                <span slot="inactive-icon" className="material-symbols-rounded">
+                    receipt_long
+                </span>
+                <span slot="active-icon" className="material-symbols-rounded">
+                    receipt_long
+                </span>
+            </md-navigation-tab>
+
+            <md-navigation-tab label="پرداخت‌ها">
+                <span slot="inactive-icon" className="material-symbols-rounded">
+                    payments
+                </span>
+                <span slot="active-icon" className="material-symbols-rounded">
+                    payments
+                </span>
+            </md-navigation-tab>
+
+            <md-navigation-tab label="پروفایل">
+                <span slot="inactive-icon" className="material-symbols-rounded">
+                    person
+                </span>
+                <span slot="active-icon" className="material-symbols-rounded">
+                    person
+                </span>
+            </md-navigation-tab>
+        </md-navigation-bar>
+    );
+
+    const detailHeader = selectedOrderId ? (
+        <header className="top-bar">
+            <md-icon-button
+                aria-label="بازگشت"
+                onClick={() => setSelectedOrderId(null)}
+            >
+                <span className="material-symbols-rounded" aria-hidden="true">
+                    arrow_forward
+                </span>
+            </md-icon-button>
+
+            <h1 className="top-bar-title">جزئیات سفارش</h1>
+
+            <span className="top-bar-spacer" aria-hidden="true"></span>
+        </header>
+    ) : null;
+
+    const renderTabContent = () => {
+        if (selectedOrderId && activeTab === TAB.ORDERS) {
+            return <OrderDetailsView orderId={selectedOrderId} />;
+        }
+
+        switch (activeTab) {
+            case TAB.HOME:
+                return (
                     <PlaceholderTab
-                        title="فروشگاه‌های حضوری"
-                        description="فهرست فروشگاه‌های حضوری به‌زودی در این بخش نمایش داده می‌شود."
-                        icon="store"
+                        title="خانه"
+                        description="به د‌پی خوش آمدید. فروشگاه‌های حضوری و خدمات اصلی به‌زودی از این بخش در دسترس قرار می‌گیرند."
+                        icon="home"
                     />
-                ) : null}
-                {activeTab === TAB.PROFILE ? (
+                );
+            case TAB.ORDERS:
+                return <OrdersTab onOpenOrder={setSelectedOrderId} />;
+            case TAB.PAYMENTS:
+                return <PaymentsTab />;
+            case TAB.PROFILE:
+                return (
                     <PlaceholderTab
                         title="پروفایل"
                         description="اطلاعات حساب کاربری به‌زودی در این بخش قرار می‌گیرد."
                         icon="person"
                     />
-                ) : null}
-            </main>
+                );
+            default:
+                return null;
+        }
+    };
 
-            <md-navigation-bar
-                ref={navRef}
-                class="home-nav-bar"
-                aria-label="ناوبری اصلی"
-            >
-                <md-navigation-tab label="سفارش‌ها">
-                    <span slot="inactive-icon" className="material-symbols-rounded">
-                        receipt_long
-                    </span>
-                    <span slot="active-icon" className="material-symbols-rounded">
-                        receipt_long
-                    </span>
-                </md-navigation-tab>
-
-                <md-navigation-tab label="پرداخت‌ها">
-                    <span slot="inactive-icon" className="material-symbols-rounded">
-                        payments
-                    </span>
-                    <span slot="active-icon" className="material-symbols-rounded">
-                        payments
-                    </span>
-                </md-navigation-tab>
-
-                <md-navigation-tab label="فروشگاه‌ها">
-                    <span slot="inactive-icon" className="material-symbols-rounded">
-                        store
-                    </span>
-                    <span slot="active-icon" className="material-symbols-rounded">
-                        store
-                    </span>
-                </md-navigation-tab>
-
-                <md-navigation-tab label="پروفایل">
-                    <span slot="inactive-icon" className="material-symbols-rounded">
-                        person
-                    </span>
-                    <span slot="active-icon" className="material-symbols-rounded">
-                        person
-                    </span>
-                </md-navigation-tab>
-            </md-navigation-bar>
-        </div>
+    return (
+        <HomeShell navBar={navBar} header={detailHeader}>
+            {renderTabContent()}
+        </HomeShell>
     );
 }
 

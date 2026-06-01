@@ -4,9 +4,7 @@ import { payments } from "../../../data/homeMock.js";
 function PaymentsTab() {
     return (
         <div className="home-tab">
-            <h2 className="home-tab__title content-title md-typescale-headline-medium">
-                پرداخت‌ها
-            </h2>
+            <h2 className="home-page-heading">پرداخت‌ها</h2>
 
             <ul className="card-list">
                 {payments.map((payment) => (

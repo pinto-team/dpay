@@ -7,9 +7,7 @@ function PlaceholderTab({ title, description, icon }) {
             >
                 {icon}
             </span>
-            <h2 className="home-tab__title content-title md-typescale-headline-medium">
-                {title}
-            </h2>
+            <h2 className="home-page-heading">{title}</h2>
             <p className="home-tab__placeholder-text md-typescale-body-large">
                 {description}
             </p>

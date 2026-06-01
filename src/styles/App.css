@@ -29,6 +29,11 @@ body {
   overflow-y: auto;
 }
 
+/* خانه: اسکرول فقط روی لیست، نه کل صفحه + nav */
+.home-shell.screen {
+  overflow: hidden;
+}
+
 /* Shared app scaffold */
 .app-scaffold {
   display: flex;
