@@ -6,6 +6,22 @@ export const walletSummary = {
     dueLabel: "پایان روز ۳۰ آبان",
 };
 
+export const homeInStoreHelp = {
+    label: "در خرید حضوری چطور پرداخت کنم؟",
+};
+
+/** مسیر بنرها: فایل‌های banner1/2/3.jpg را در public/banners بگذارید */
+export const homeBanners = {
+    wide: {
+        src: "/banners/banner1.jpg",
+        alt: "بنر ۱",
+    },
+    half: [
+        { src: "/banners/banner2.jpg", alt: "بنر ۲" },
+        { src: "/banners/banner3.jpg", alt: "بنر ۳" },
+    ],
+};
+
 export const creditDetails = {
     remaining: walletSummary.balance,
     total: "۱۰,۰۰۰,۰۰۰",

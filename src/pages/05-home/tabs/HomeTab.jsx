@@ -1,5 +1,7 @@
+import HomeBanners from "../../../components/home/HomeBanners.jsx";
+import HomeInStoreHelpCard from "../../../components/home/HomeInStoreHelpCard.jsx";
 import HomeWalletCard from "../../../components/home/HomeWalletCard.jsx";
-import { walletSummary } from "../../../data/homeMock.js";
+import { homeInStoreHelp, walletSummary } from "../../../data/homeMock.js";
 
 function HomeTab() {
     return (
@@ -9,6 +11,8 @@ function HomeTab() {
                 payableDebt={walletSummary.payableDebt}
                 dueLabel={walletSummary.dueLabel}
             />
+            <HomeBanners />
+            <HomeInStoreHelpCard label={homeInStoreHelp.label} />
         </div>
     );
 }

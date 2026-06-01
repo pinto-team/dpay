@@ -62,12 +62,93 @@ md-navigation-bar.home-nav-bar {
   padding-block-start: 28px;
 }
 
+/* ─── Home action row (in-store help) ─── */
+
+md-elevated-card.app-card.home-action-card,
+md-elevated-card.app-card.account-section__card,
+md-outlined-card.app-card.account-logout-card,
+md-elevated-card.app-card.order-detail-card {
+  padding: 0;
+}
+
+.home-action-row {
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: inherit;
+  text-align: inherit;
+}
+
+.home-action-row__leading {
+  flex-shrink: 0;
+  font-size: 28px;
+  color: var(--md-sys-color-primary);
+}
+
+.home-action-row__label {
+  margin-inline-start: auto;
+  min-width: 0;
+  flex: 1 1 auto;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+}
+
+.home-action-row__trailing {
+  flex-shrink: 0;
+  font-size: 24px;
+  color: var(--md-sys-color-outline);
+}
+
+/* ─── Home promo banners ─── */
+
+.home-banners {
+  display: grid;
+  gap: 12px;
+}
+
+.home-banners__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.home-banners__item {
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.home-banners__item--wide {
+  aspect-ratio: 2.2 / 1;
+}
+
+.home-banners__item--half {
+  aspect-ratio: 1 / 1;
+}
+
+.home-banners__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ─── Home wallet card ─── */
 
 .home-wallet-card {
   display: grid;
   gap: 0;
   width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .home-wallet-card__balance-row,
@@ -405,12 +486,15 @@ md-elevated-card.app-card {
 }
 
 .app-card {
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.order-detail-card.app-card {
-  padding: 0;
+.payment-card,
+.order-card,
+.payment-info-card,
+.installment-card {
+  padding: 20px;
 }
 
 .amount-currency {
@@ -812,6 +896,7 @@ md-elevated-card.app-card {
   justify-content: space-between;
   gap: 12px;
   width: 100%;
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -886,10 +971,6 @@ md-elevated-card.app-card {
   color: var(--md-sys-color-on-surface-variant);
 }
 
-.account-section__card {
-  padding: 0;
-}
-
 .account-section__row-wrap {
   padding-inline: 16px;
 }
@@ -923,10 +1004,6 @@ md-elevated-card.app-card {
 
 .account-row__trailing {
   color: var(--md-sys-color-outline);
-}
-
-.account-logout-card {
-  padding: 0;
 }
 
 .account-logout {
