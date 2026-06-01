@@ -1,4 +1,4 @@
-function PlaceholderTab({ title, description, icon }) {
+function PlaceholderTab({ description, icon }) {
     return (
         <div className="home-tab home-tab--placeholder">
             <span
@@ -7,7 +7,6 @@ function PlaceholderTab({ title, description, icon }) {
             >
                 {icon}
             </span>
-            <h2 className="home-page-heading">{title}</h2>
             <p className="home-tab__placeholder-text md-typescale-body-large">
                 {description}
             </p>

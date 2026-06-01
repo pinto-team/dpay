@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
+import HomePageHeader from "../../components/home/HomePageHeader.jsx";
 import HomeShell from "../../components/home/HomeShell.jsx";
 import OrderDetailsView from "./OrderDetailsView.jsx";
 import OrdersTab from "./tabs/OrdersTab.jsx";
@@ -83,22 +84,28 @@ function HomePage() {
         </md-navigation-bar>
     );
 
-    const detailHeader = selectedOrderId ? (
-        <header className="top-bar">
-            <md-icon-button
-                aria-label="بازگشت"
-                onClick={() => setSelectedOrderId(null)}
-            >
-                <span className="material-symbols-rounded" aria-hidden="true">
-                    arrow_forward
-                </span>
-            </md-icon-button>
+    const header =
+        selectedOrderId && activeTab === TAB.ORDERS ? (
+            <header className="top-bar">
+                <md-icon-button
+                    aria-label="بازگشت"
+                    onClick={() => setSelectedOrderId(null)}
+                >
+                    <span
+                        className="material-symbols-rounded"
+                        aria-hidden="true"
+                    >
+                        arrow_forward
+                    </span>
+                </md-icon-button>
 
-            <h1 className="top-bar-title">جزئیات سفارش</h1>
+                <h1 className="top-bar-title">جزئیات سفارش</h1>
 
-            <span className="top-bar-spacer" aria-hidden="true"></span>
-        </header>
-    ) : null;
+                <span className="top-bar-spacer" aria-hidden="true"></span>
+            </header>
+        ) : (
+            <HomePageHeader activeTab={activeTab} />
+        );
 
     const renderTabContent = () => {
         if (selectedOrderId && activeTab === TAB.ORDERS) {
@@ -109,7 +116,6 @@ function HomePage() {
             case TAB.HOME:
                 return (
                     <PlaceholderTab
-                        title="خانه"
                         description="به د‌پی خوش آمدید. فروشگاه‌های حضوری و خدمات اصلی به‌زودی از این بخش در دسترس قرار می‌گیرند."
                         icon="home"
                     />
@@ -121,7 +127,6 @@ function HomePage() {
             case TAB.PROFILE:
                 return (
                     <PlaceholderTab
-                        title="پروفایل"
                         description="اطلاعات حساب کاربری به‌زودی در این بخش قرار می‌گیرد."
                         icon="person"
                     />
@@ -132,7 +137,7 @@ function HomePage() {
     };
 
     return (
-        <HomeShell navBar={navBar} header={detailHeader}>
+        <HomeShell navBar={navBar} header={header}>
             {renderTabContent()}
         </HomeShell>
     );

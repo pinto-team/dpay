@@ -10,8 +10,17 @@
   background: var(--md-sys-color-surface);
 }
 
-.top-bar--home {
+.top-bar--page-title {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 64px;
+  padding-inline: 16px 4px;
+}
+
+.top-bar--page-title .top-bar-title {
+  text-align: right;
 }
 
 .home-shell__content {
@@ -19,7 +28,7 @@
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 8px 16px 16px;
+  padding: 0 16px 16px;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -42,19 +51,10 @@ md-navigation-bar.home-nav-bar {
   width: 100%;
 }
 
-/* عنوان صفحه در بدنه (هم‌سبک تیترهای فلو ورود، نه headline) */
-.home-page-heading {
-  margin: 0;
-  text-align: right;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--md-sys-color-on-surface);
-}
-
 .home-tab {
   display: grid;
   gap: 24px;
+  padding-block-start: 16px;
   padding-block-end: 8px;
 }
 
@@ -342,6 +342,7 @@ md-outlined-card.app-card {
 
 .page-content--details {
   gap: 24px;
+  padding-block-start: 16px;
 }
 
 .order-detail-card {
@@ -351,7 +352,9 @@ md-outlined-card.app-card {
 }
 
 .order-detail-card__head {
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
   padding: 20px 20px 16px;
 }
@@ -361,13 +364,7 @@ md-outlined-card.app-card {
   text-align: right;
   font-weight: 500;
   color: var(--md-sys-color-on-surface);
-}
-
-.order-detail-card__chips {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
+  min-width: 0;
 }
 
 .order-detail-card__body {

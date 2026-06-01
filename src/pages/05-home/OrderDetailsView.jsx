@@ -4,10 +4,6 @@ import { getOrderDetail } from "../../data/homeMock.js";
 
 function OrderDetailsView({ orderId }) {
     const order = getOrderDetail(orderId);
-    const purchaseChipClass =
-        order.purchaseMode === "payNow"
-            ? "detail-chip--pay-now"
-            : "detail-chip--bnpl";
 
     return (
         <div className="page-content page-content--details">
@@ -16,18 +12,10 @@ function OrderDetailsView({ orderId }) {
                     <p className="order-detail-card__merchant md-typescale-title-large">
                         {order.merchant}
                     </p>
-
-                    <div className="order-detail-card__chips">
-                        <span
-                            className={`detail-chip md-typescale-label-medium ${purchaseChipClass}`}
-                        >
-                            {order.purchaseType}
-                        </span>
-                        <StatusChip
-                            status={order.status}
-                            label={order.statusLabel}
-                        />
-                    </div>
+                    <StatusChip
+                        status={order.status}
+                        label={order.statusLabel}
+                    />
                 </div>
 
                 <div className="order-detail-card__body">
