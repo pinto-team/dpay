@@ -2,7 +2,7 @@ const TAB_TITLE = {
     0: "خانه",
     1: "سفارش‌ها",
     2: "پرداخت‌ها",
-    3: "پروفایل",
+    3: "حساب کاربری",
 };
 
 function HomePageHeader({ activeTab }) {

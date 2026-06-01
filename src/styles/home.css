@@ -109,6 +109,11 @@ md-outlined-card.app-card {
   background: var(--md-sys-color-surface-container-lowest);
 }
 
+/* سایه ملایم‌تر از پیش‌فرض M3 (سطح ۱) */
+md-elevated-card.app-card {
+  --md-elevated-card-container-elevation: 0.5;
+}
+
 .app-card {
   padding: 20px;
   box-sizing: border-box;
@@ -501,4 +506,144 @@ md-outlined-card.app-card {
 .installment-card__amount .amount-currency {
   margin-inline-start: 0;
   font-weight: 400;
+}
+
+/* ─── Account tab ─── */
+
+.account-tab {
+  gap: 20px;
+}
+
+.account-profile-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.account-profile-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.account-profile-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
+}
+
+.account-profile-card__avatar .material-symbols-rounded {
+  font-size: 32px;
+}
+
+.account-profile-card__body {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.account-profile-card__name,
+.account-profile-card__phone {
+  margin: 0;
+  text-align: right;
+}
+
+.account-profile-card__phone {
+  color: var(--md-sys-color-on-surface-variant);
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: right;
+}
+
+.account-profile-card__edit {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  color: var(--md-sys-color-primary);
+}
+
+.account-profile-card__edit .material-symbols-rounded {
+  font-size: 24px;
+}
+
+.account-section {
+  display: grid;
+  gap: 8px;
+}
+
+.account-section__title {
+  margin: 0;
+  text-align: right;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.account-section__card {
+  padding: 0;
+}
+
+.account-section__row-wrap {
+  padding-inline: 16px;
+}
+
+.account-section__divider {
+  height: 1px;
+  background: var(--md-sys-color-outline-variant);
+}
+
+.account-row {
+  width: 100%;
+  padding: 14px 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.account-row__leading {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.account-row__label {
+  margin-inline-start: auto;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.account-row__trailing {
+  color: var(--md-sys-color-outline);
+}
+
+.account-logout-card {
+  padding: 0;
+}
+
+.account-logout {
+  width: 100%;
+  height: 56px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--md-sys-color-error);
 }

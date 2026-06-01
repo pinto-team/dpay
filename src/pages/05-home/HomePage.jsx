@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import HomePageHeader from "../../components/home/HomePageHeader.jsx";
 import HomeShell from "../../components/home/HomeShell.jsx";
 import OrderDetailsView from "./OrderDetailsView.jsx";
+import AccountTab from "./tabs/AccountTab.jsx";
 import OrdersTab from "./tabs/OrdersTab.jsx";
 import PaymentsTab from "./tabs/PaymentsTab.jsx";
 import PlaceholderTab from "./tabs/PlaceholderTab.jsx";
@@ -73,7 +74,7 @@ function HomePage() {
                 </span>
             </md-navigation-tab>
 
-            <md-navigation-tab label="پروفایل">
+            <md-navigation-tab label="حساب کاربری">
                 <span slot="inactive-icon" className="material-symbols-rounded">
                     person
                 </span>
@@ -125,12 +126,7 @@ function HomePage() {
             case TAB.PAYMENTS:
                 return <PaymentsTab />;
             case TAB.PROFILE:
-                return (
-                    <PlaceholderTab
-                        description="اطلاعات حساب کاربری به‌زودی در این بخش قرار می‌گیرد."
-                        icon="person"
-                    />
-                );
+                return <AccountTab />;
             default:
                 return null;
         }

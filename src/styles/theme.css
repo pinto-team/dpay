@@ -27,19 +27,19 @@
     --md-sys-color-error-container: #ffdad6;
     --md-sys-color-on-error-container: #410002;
 
-    --md-sys-color-background: #f7f9fd;
+    --md-sys-color-background: #fafafa;
     --md-sys-color-on-background: #1a1c1e;
 
-    --md-sys-color-surface: #f7f9fd;
+    --md-sys-color-surface: #fafafa;
     --md-sys-color-on-surface: #1a1c1e;
 
     /* وضعیت‌های معنایی (خارج از پالت پیش‌فرض بنفش M3) */
-    --md-sys-color-success-container: #c8e6d0;
-    --md-sys-color-on-success-container: #0d3d24;
+    --md-sys-color-success-container: #c5eccf;
+    --md-sys-color-on-success-container: #00391a;
     --md-sys-color-cancelled-container: #e2e5ea;
     --md-sys-color-on-cancelled-container: #43474e;
-    --md-sys-color-bnpl-active-container: #fff0d6;
-    --md-sys-color-on-bnpl-active-container: #6b4a00;
+    --md-sys-color-bnpl-active-container: #9be4ff;
+    --md-sys-color-on-bnpl-active-container: #002e40;
     --md-sys-color-upcoming-container: #e8eef8;
     --md-sys-color-on-upcoming-container: #1a3a5c;
 
@@ -50,8 +50,8 @@
     --md-sys-color-outline-variant: #c3c7cf;
 
     --md-sys-color-surface-container-lowest: #ffffff;
-    --md-sys-color-surface-container-low: #f7f9fd;
-    --md-sys-color-surface-container: #f1f3f7;
+    --md-sys-color-surface-container-low: #ffffff;
+    --md-sys-color-surface-container: #ffffff;
     --md-sys-color-surface-container-high: #eceef2;
     --md-sys-color-surface-container-highest: #e6e8ed;
 
