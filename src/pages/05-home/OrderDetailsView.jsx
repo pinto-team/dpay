@@ -1,3 +1,4 @@
+import DateTimeText from "../../components/common/DateTimeText.jsx";
 import StatusChip from "../../components/home/StatusChip.jsx";
 import { getOrderDetail } from "../../data/homeMock.js";
 
@@ -55,8 +56,8 @@ function OrderDetailsView({ orderId }) {
                             <dt className="md-typescale-body-medium">
                                 زمان ثبت سفارش
                             </dt>
-                            <dd className="md-typescale-body-medium">
-                                {order.registeredAt}
+                            <dd>
+                                <DateTimeText value={order.registeredAt} />
                             </dd>
                         </div>
                     </dl>
@@ -79,7 +80,11 @@ function OrderDetailsView({ orderId }) {
                                     <dd
                                         className={`md-typescale-body-medium ${row.ltr ? "detail-meta__value" : ""}`}
                                     >
-                                        {row.value}
+                                        {row.isDateTime ? (
+                                            <DateTimeText value={row.value} />
+                                        ) : (
+                                            row.value
+                                        )}
                                     </dd>
                                 </div>
                             ))}

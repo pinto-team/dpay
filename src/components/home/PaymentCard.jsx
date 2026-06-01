@@ -1,32 +1,35 @@
+import DateTimeText from "../common/DateTimeText.jsx";
 import StatusChip from "./StatusChip.jsx";
 
 function PaymentCard({ payment }) {
     return (
         <md-elevated-card class="app-card payment-card">
-            <p className="payment-card__meta md-typescale-label-medium">
-                {payment.date} | {payment.time}
-            </p>
-
-            <div className="payment-card__main">
-                <StatusChip status={payment.status} label={payment.statusLabel} />
+            <div className="payment-card__top">
                 <p className="payment-card__amount md-typescale-title-medium">
-                    {payment.amount}
                     <span className="amount-currency md-typescale-label-medium">
                         تومان
                     </span>
+                    {payment.amount}
                 </p>
+                <StatusChip status={payment.status} label={payment.statusLabel} />
             </div>
 
-            {payment.reference ? (
-                <div className="payment-card__reference">
-                    <span className="payment-card__reference-label md-typescale-label-medium">
-                        شماره ارجاع:
-                    </span>
-                    <span className="payment-card__reference-value md-typescale-body-medium">
-                        {payment.reference}
-                    </span>
-                </div>
-            ) : null}
+            <div className="payment-card__bottom md-typescale-body-small">
+                <DateTimeText date={payment.date} time={payment.time} />
+
+                {payment.reference ? (
+                    <>
+                        <span className="payment-card__reference">
+                            <span className="payment-card__reference-label">
+                                شماره ارجاع:
+                            </span>
+                            <span className="payment-card__reference-value">
+                                {payment.reference}
+                            </span>
+                        </span>
+                    </>
+                ) : null}
+            </div>
 
             {payment.note ? (
                 <p className="payment-card__note md-typescale-body-small">

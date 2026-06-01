@@ -46,20 +46,7 @@ export const orderSections = [
             },
         ],
     },
-    {
-        id: "aban",
-        title: "سفارش‌های آبان",
-        items: [
-            {
-                id: "ord-paynow",
-                merchant: "افق کوروش",
-                status: "payNow",
-                statusLabel: "پرداخت شده",
-                amount: "2,847,500",
-                datetime: "۱۴:۲۲ - ۱۴۰۴/۸/۱۵",
-            },
-        ],
-    },
+
     {
         id: "shahrivar",
         title: "سفارش‌های شهریور",
@@ -123,23 +110,6 @@ export const orderDetailsById = {
                 status: "paid",
                 statusLabel: "پرداخت‌شده",
             },
-        ],
-    },
-
-    "ord-paynow": {
-        merchant: "افق کوروش",
-        amount: "2,847,500",
-        purchaseType: "پرداخت الان",
-        purchaseMode: "payNow",
-        status: "payNow",
-        statusLabel: "پرداخت شده",
-        orderNumber: "78120456",
-        registeredAt: "۱۴:۲۰ - ۱۴۰۴/۸/۱۵",
-        installments: [],
-        paymentInfo: [
-            { label: "روش پرداخت", value: "کارت بانکی" },
-            { label: "شماره پیگیری", value: "384920175638", ltr: true },
-            { label: "زمان پرداخت", value: "۱۴:۲۲ - ۱۴۰۴/۸/۱۵" },
         ],
     },
 

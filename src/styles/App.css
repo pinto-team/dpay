@@ -172,6 +172,23 @@ md-filled-button {
   color: var(--md-sys-color-on-surface);
 }
 
+/* تاریخ چپ، ساعت راست — در کل پروژه */
+.datetime-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr;
+  unicode-bidi: isolate;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.datetime-text__sep,
+.payment-card__inline-sep {
+  color: var(--md-sys-color-outline);
+  font-weight: 400;
+  user-select: none;
+}
+
 /* Terms */
 .terms-body {
   display: grid;

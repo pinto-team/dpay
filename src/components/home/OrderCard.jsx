@@ -1,3 +1,4 @@
+import DateTimeText from "../common/DateTimeText.jsx";
 import StatusChip from "./StatusChip.jsx";
 
 function OrderCard({ order, onSelect }) {
@@ -31,9 +32,11 @@ function OrderCard({ order, onSelect }) {
             </div>
 
             <div className="order-card__footer">
-                <span className="order-card__datetime md-typescale-body-medium">
-                    {order.datetime}
-                </span>
+                <DateTimeText
+                    date={order.date}
+                    time={order.time}
+                    value={order.datetime}
+                />
                 <span className="order-card__action md-typescale-label-large">
                     جزئیات
                     <span

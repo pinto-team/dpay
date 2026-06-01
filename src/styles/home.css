@@ -202,44 +202,53 @@ md-outlined-card.app-card {
 
 .payment-card {
   display: grid;
-  gap: 16px;
+  gap: 0;
 }
 
-.payment-card__meta {
-  margin: 0;
-  color: var(--md-sys-color-on-surface-variant);
-  text-align: right;
-}
-
-.payment-card__main {
+.payment-card__top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+  padding-block-end: 14px;
 }
 
 .payment-card__amount {
   margin: 0;
-  text-align: left;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
   direction: ltr;
   unicode-bidi: isolate;
   font-weight: 700;
   color: var(--md-sys-color-on-surface);
 }
 
-.payment-card__reference {
+.payment-card__amount .amount-currency {
+  margin-inline-start: 0;
+  font-weight: 400;
+}
+
+.payment-card__bottom {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 6px 8px;
-  padding-block-start: 4px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-block-start: 14px;
   border-block-start: 1px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.payment-card__reference {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .payment-card__reference-label {
   color: var(--md-sys-color-on-surface-variant);
-  flex-shrink: 0;
 }
 
 .payment-card__reference-value {
@@ -250,8 +259,8 @@ md-outlined-card.app-card {
 }
 
 .payment-card__note {
-  margin: 0;
-  padding: 12px 14px;
+  margin: 14px 0 0;
+  padding: 14px 16px;
   border-radius: 12px;
   background: var(--md-sys-color-error-container);
   color: var(--md-sys-color-on-error-container);
@@ -317,9 +326,6 @@ md-outlined-card.app-card {
   border-block-start: 1px solid var(--md-sys-color-outline-variant);
 }
 
-.order-card__datetime {
-  color: var(--md-sys-color-on-surface-variant);
-}
 
 .order-card__action {
   display: inline-flex;
