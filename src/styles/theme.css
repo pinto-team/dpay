@@ -1,64 +1,119 @@
 :root {
     color-scheme: light;
 
-    /* Material 3 System Color Tokens - Blue Payment Theme */
+    /*
+     * پالت زنده‌تر (الهام از SnappPay-style tokens)
+     * brand #1159FC · back #F2F3F6 · elevated #FFFFFF
+     */
 
-    --md-sys-color-primary: #005db7;
+    --md-sys-color-primary: #1159fc;
     --md-sys-color-on-primary: #ffffff;
 
-    --md-sys-color-primary-container: #d7e3ff;
-    --md-sys-color-on-primary-container: #001b3e;
+    --md-sys-color-primary-container: #deedff;
+    --md-sys-color-on-primary-container: #1159fc;
 
-    --md-sys-color-secondary: #535f70;
+    --md-sys-color-secondary: #45474a;
     --md-sys-color-on-secondary: #ffffff;
 
-    --md-sys-color-secondary-container: #d7e3f8;
-    --md-sys-color-on-secondary-container: #101c2b;
+    --md-sys-color-secondary-container: #eaeff7;
+    --md-sys-color-on-secondary-container: #1159fc;
 
-    --md-sys-color-tertiary: #6b5778;
+    --md-sys-color-tertiary: #3479ff;
     --md-sys-color-on-tertiary: #ffffff;
 
-    --md-sys-color-tertiary-container: #f2daff;
-    --md-sys-color-on-tertiary-container: #251431;
+    --md-sys-color-tertiary-container: #deedff;
+    --md-sys-color-on-tertiary-container: #1159fc;
 
-    --md-sys-color-error: #ba1a1a;
+    --md-sys-color-error: #ca2300;
     --md-sys-color-on-error: #ffffff;
 
-    --md-sys-color-error-container: #ffdad6;
-    --md-sys-color-on-error-container: #410002;
+    --md-sys-color-error-container: #ffe9e3;
+    --md-sys-color-on-error-container: #b10000;
 
-    --md-sys-color-background: #fafafa;
-    --md-sys-color-on-background: #1a1c1e;
+    --md-sys-color-background: #f2f3f6;
+    --md-sys-color-on-background: #101113;
 
-    --md-sys-color-surface: #fafafa;
-    --md-sys-color-on-surface: #1a1c1e;
+    --md-sys-color-surface: #f2f3f6;
+    --md-sys-color-on-surface: #000000;
 
-    /* وضعیت‌های معنایی (خارج از پالت پیش‌فرض بنفش M3) */
-    --md-sys-color-success-container: #c5eccf;
-    --md-sys-color-on-success-container: #00391a;
-    --md-sys-color-cancelled-container: #e2e5ea;
-    --md-sys-color-on-cancelled-container: #43474e;
-    --md-sys-color-bnpl-active-container: #9be4ff;
-    --md-sys-color-on-bnpl-active-container: #002e40;
-    --md-sys-color-upcoming-container: #e8eef8;
-    --md-sys-color-on-upcoming-container: #1a3a5c;
+    /* وضعیت‌های معنایی */
+    --md-sys-color-success-container: #ceffd5;
+    --md-sys-color-on-success-container: #007331;
 
-    --md-sys-color-surface-variant: #dfe2eb;
-    --md-sys-color-on-surface-variant: #43474e;
+    --md-sys-color-warning-container: #fef2e0;
+    --md-sys-color-on-warning-container: #986d00;
 
-    --md-sys-color-outline: #73777f;
-    --md-sys-color-outline-variant: #c3c7cf;
+    --md-sys-color-cancelled-container: #eaeff7;
+    --md-sys-color-on-cancelled-container: #5c5e63;
+
+    --md-sys-color-bnpl-active-container: #deedff;
+    --md-sys-color-on-bnpl-active-container: #1159fc;
+
+    --md-sys-color-upcoming-container: #eaeff7;
+    --md-sys-color-on-upcoming-container: #1159fc;
+
+    --md-sys-color-surface-variant: #dfe1e5;
+    --md-sys-color-on-surface-variant: #45474a;
+
+    --md-sys-color-outline: #74777c;
+    --md-sys-color-outline-variant: #dfe1e5;
 
     --md-sys-color-surface-container-lowest: #ffffff;
     --md-sys-color-surface-container-low: #ffffff;
     --md-sys-color-surface-container: #ffffff;
-    --md-sys-color-surface-container-high: #eceef2;
-    --md-sys-color-surface-container-highest: #e6e8ed;
+    --md-sys-color-surface-container-high: #f9f9fb;
+    --md-sys-color-surface-container-highest: #dfe1e5;
 
-    --md-sys-color-inverse-surface: #2f3033;
-    --md-sys-color-inverse-on-surface: #f1f0f4;
-    --md-sys-color-inverse-primary: #abc7ff;
+    --md-sys-color-inverse-surface: #101113;
+    --md-sys-color-inverse-on-surface: #f9f9fb;
+    --md-sys-color-inverse-primary: #5b9aff;
 
     --md-sys-color-shadow: #000000;
     --md-sys-color-scrim: #000000;
+
+    /* ─── M3 components (جلوگیری از بنفش/مات پیش‌فرض کتابخانه) ─── */
+
+    --md-navigation-bar-container-color: #ffffff;
+    --md-navigation-bar-container-elevation: 0;
+    --md-navigation-bar-active-indicator-color: #deedff;
+    --md-navigation-bar-active-indicator-width: 64px;
+    --md-navigation-bar-active-icon-color: #1159fc;
+    --md-navigation-bar-active-label-text-color: #1159fc;
+    --md-navigation-bar-active-hover-icon-color: #1159fc;
+    --md-navigation-bar-active-hover-label-text-color: #1159fc;
+    --md-navigation-bar-active-focus-icon-color: #1159fc;
+    --md-navigation-bar-active-focus-label-text-color: #1159fc;
+    --md-navigation-bar-active-pressed-icon-color: #1159fc;
+    --md-navigation-bar-active-pressed-label-text-color: #1159fc;
+    --md-navigation-bar-inactive-icon-color: #74777c;
+    --md-navigation-bar-inactive-label-text-color: #74777c;
+    --md-navigation-bar-inactive-hover-icon-color: #45474a;
+    --md-navigation-bar-inactive-hover-label-text-color: #45474a;
+    --md-navigation-bar-inactive-focus-icon-color: #45474a;
+    --md-navigation-bar-inactive-focus-label-text-color: #45474a;
+
+    --md-filled-button-container-color: #1159fc;
+    --md-filled-button-label-text-color: #ffffff;
+    --md-filled-button-hover-container-color: #0f4ed4;
+    --md-filled-button-focus-container-color: #0f4ed4;
+    --md-filled-button-pressed-container-color: #0d42b5;
+
+    --md-outlined-button-outline-color: #1159fc;
+    --md-outlined-button-label-text-color: #1159fc;
+    --md-outlined-button-hover-label-text-color: #0f4ed4;
+    --md-outlined-button-focus-label-text-color: #0f4ed4;
+
+    --md-text-button-label-text-color: #1159fc;
+    --md-text-button-hover-label-text-color: #0f4ed4;
+    --md-text-button-focus-label-text-color: #0f4ed4;
+
+    --md-icon-button-icon-color: #45474a;
+    --md-icon-button-hover-icon-color: #1159fc;
+    --md-icon-button-focus-icon-color: #1159fc;
+
+    --md-elevated-card-container-color: #ffffff;
+
+    --md-outlined-text-field-focus-outline-color: #1159fc;
+    --md-outlined-text-field-focus-label-text-color: #1159fc;
+    --md-outlined-text-field-caret-color: #1159fc;
 }

@@ -41,18 +41,11 @@
   flex-shrink: 0;
   width: 100%;
   z-index: 10;
-  background: var(--md-sys-color-surface-container);
+  background: #ffffff;
   border-block-start: 1px solid var(--md-sys-color-outline-variant);
 }
 
-/* M3 navigation bar — override بنفش پیش‌فرض کتابخانه */
 md-navigation-bar.home-nav-bar {
-  --md-navigation-bar-container-color: var(--md-sys-color-surface-container);
-  --md-navigation-bar-active-indicator-color: var(--md-sys-color-primary-container);
-  --md-navigation-bar-active-icon-color: var(--md-sys-color-primary);
-  --md-navigation-bar-active-label-text-color: var(--md-sys-color-primary);
-  --md-navigation-bar-inactive-icon-color: var(--md-sys-color-on-surface-variant);
-  --md-navigation-bar-inactive-label-text-color: var(--md-sys-color-on-surface-variant);
   width: 100%;
 }
 
@@ -653,68 +646,76 @@ md-elevated-card.app-card {
 
 /* ─── Status chips (معنای M3) ─── */
 
-.status-chip {
+.status-chip,
+.detail-chip {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 8px;
+  padding: 5px 12px;
+  border-radius: 10px;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: 600;
+  border: 1px solid transparent;
 }
 
 .status-chip--settled,
 .status-chip--success {
   background: var(--md-sys-color-success-container);
   color: var(--md-sys-color-on-success-container);
+  border-color: rgb(0 201 88 / 28%);
 }
 
 .status-chip--pay-now {
   background: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
+  border-color: rgb(17 89 252 / 22%);
 }
 
 .status-chip--bnpl-active {
   background: var(--md-sys-color-bnpl-active-container);
   color: var(--md-sys-color-on-bnpl-active-container);
+  border-color: rgb(17 89 252 / 22%);
 }
 
 .status-chip--upcoming {
   background: var(--md-sys-color-upcoming-container);
   color: var(--md-sys-color-on-upcoming-container);
+  border-color: rgb(17 89 252 / 16%);
 }
 
 .status-chip--error {
   background: var(--md-sys-color-error-container);
   color: var(--md-sys-color-on-error-container);
+  border-color: rgb(249 68 31 / 24%);
 }
 
 .status-chip--cancelled {
   background: var(--md-sys-color-cancelled-container);
   color: var(--md-sys-color-on-cancelled-container);
+  border-color: var(--md-sys-color-outline-variant);
 }
 
 .status-chip--neutral {
   background: var(--md-sys-color-surface-container-high);
   color: var(--md-sys-color-on-surface-variant);
+  border-color: var(--md-sys-color-outline-variant);
 }
 
 .detail-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 8px;
   background: var(--md-sys-color-surface-container-high);
   color: var(--md-sys-color-on-surface-variant);
+  border-color: var(--md-sys-color-outline-variant);
 }
 
 .detail-chip--pay-now {
   background: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
+  border-color: rgb(17 89 252 / 22%);
 }
 
 .detail-chip--bnpl {
-  background: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
+  background: var(--md-sys-color-bnpl-active-container);
+  color: var(--md-sys-color-on-bnpl-active-container);
+  border-color: rgb(17 89 252 / 22%);
 }
 
 .payment-info-card {
