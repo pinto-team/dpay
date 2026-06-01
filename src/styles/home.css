@@ -32,6 +32,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.home-shell__content--flush {
+  padding: 0;
+  overflow: hidden;
+}
+
 .home-nav-bar-wrap {
   flex-shrink: 0;
   width: 100%;
@@ -67,7 +72,8 @@ md-navigation-bar.home-nav-bar {
 md-elevated-card.app-card.home-action-card,
 md-elevated-card.app-card.account-section__card,
 md-outlined-card.app-card.account-logout-card,
-md-elevated-card.app-card.order-detail-card {
+md-elevated-card.app-card.order-detail-card,
+md-elevated-card.app-card.store-branch-card {
   padding: 0;
 }
 
@@ -123,7 +129,11 @@ md-elevated-card.app-card.order-detail-card {
   overflow: hidden;
   border-radius: 20px;
   line-height: 0;
-  text-decoration: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
 }
 
 .home-banners__item--wide {
@@ -139,6 +149,144 @@ md-elevated-card.app-card.order-detail-card {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* ─── In-store QR scan ─── */
+
+.in-store-scan {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.in-store-scan__camera {
+  position: relative;
+  flex: 3;
+  min-height: 0;
+  overflow: hidden;
+  background: #121212;
+}
+
+.in-store-scan__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.in-store-scan__error {
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.in-store-scan__error p {
+  margin: 0;
+  max-width: 320px;
+}
+
+.in-store-scan__error-hint {
+  opacity: 0.9;
+  line-height: 1.65;
+}
+
+.in-store-scan__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.in-store-scan__frame {
+  position: relative;
+  width: min(68vw, 260px);
+  aspect-ratio: 1;
+  border: 3px solid #c5cdd8;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 12%);
+  box-shadow: 0 0 0 999vmax rgb(0 0 0 / 52%);
+}
+
+.in-store-scan__frame-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 3px solid #ffffff;
+}
+
+.in-store-scan__frame-corner--tl {
+  inset-block-start: -2px;
+  inset-inline-start: -2px;
+  border-block-end: 0;
+  border-inline-end: 0;
+  border-start-start-radius: 14px;
+}
+
+.in-store-scan__frame-corner--tr {
+  inset-block-start: -2px;
+  inset-inline-end: -2px;
+  border-block-end: 0;
+  border-inline-start: 0;
+  border-start-end-radius: 14px;
+}
+
+.in-store-scan__frame-corner--bl {
+  inset-block-end: -2px;
+  inset-inline-start: -2px;
+  border-block-start: 0;
+  border-inline-end: 0;
+  border-end-start-radius: 14px;
+}
+
+.in-store-scan__frame-corner--br {
+  inset-block-end: -2px;
+  inset-inline-end: -2px;
+  border-block-start: 0;
+  border-inline-start: 0;
+  border-end-end-radius: 14px;
+}
+
+.in-store-scan__hint {
+  position: absolute;
+  inset-inline: 16px;
+  inset-block-end: 16px;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  background: rgb(0 0 0 / 55%);
+}
+
+.in-store-scan__help {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 20px 20px 24px;
+  background: var(--md-sys-color-surface-container-lowest);
+  text-align: right;
+}
+
+.in-store-scan__help-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.in-store-scan__help-body {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.75;
 }
 
 /* ─── Home wallet card ─── */
@@ -722,6 +870,167 @@ md-elevated-card.app-card {
 .page-content--details {
   gap: 24px;
   padding-block-start: 16px;
+}
+
+.page-content--store {
+  gap: 20px;
+  padding-block-start: 8px;
+  padding-block-end: 24px;
+}
+
+.store-detail__hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  background: var(--md-sys-color-surface-container-high);
+}
+
+.store-detail__head {
+  display: grid;
+  gap: 8px;
+  text-align: right;
+}
+
+.store-detail__name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.store-detail__subtitle {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.store-detail__tags {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.store-detail__tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.store-detail__tag-sep {
+  color: var(--md-sys-color-outline);
+}
+
+.store-detail__section {
+  display: grid;
+  gap: 8px;
+  text-align: right;
+}
+
+.store-detail__section-title {
+  margin: 0;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.store-detail__intro {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.8;
+}
+
+.store-detail__meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.store-detail__meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: right;
+  color: var(--md-sys-color-on-surface);
+}
+
+.store-detail__meta-icon {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.store-detail__phone {
+  color: inherit;
+  text-decoration: none;
+}
+
+.store-branch-card {
+  padding: 0;
+  background: var(--md-sys-color-surface-container-low);
+}
+
+.store-branch-card__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.store-branch-card__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+}
+
+.store-branch-card__icon .material-symbols-rounded {
+  font-size: 24px;
+}
+
+.store-branch-card__body {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 4px;
+  text-align: right;
+}
+
+.store-branch-card__name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.store-branch-card__address {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.store-branch-card__nav {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.store-branch-card__nav .material-symbols-rounded {
+  font-size: 20px;
 }
 
 .order-detail-card {

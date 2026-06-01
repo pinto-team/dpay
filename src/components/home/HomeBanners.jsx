@@ -24,30 +24,40 @@ function HomeBannerImage({ src, alt, className }) {
     );
 }
 
-function HomeBanners() {
+function HomeBanners({ onOpenStore }) {
+    const handleOpen = (event) => {
+        event.preventDefault();
+        onOpenStore?.();
+    };
+
     return (
         <section className="home-banners" aria-label="بنرهای تبلیغاتی">
-            <a className="home-banners__item home-banners__item--wide" href="#">
+            <button
+                type="button"
+                className="home-banners__item home-banners__item--wide"
+                onClick={handleOpen}
+            >
                 <HomeBannerImage
                     src={homeBanners.wide.src}
                     alt={homeBanners.wide.alt}
                     className="home-banners__img"
                 />
-            </a>
+            </button>
 
             <div className="home-banners__row">
                 {homeBanners.half.map((banner) => (
-                    <a
+                    <button
                         key={banner.src}
+                        type="button"
                         className="home-banners__item home-banners__item--half"
-                        href="#"
+                        onClick={handleOpen}
                     >
                         <HomeBannerImage
                             src={banner.src}
                             alt={banner.alt}
                             className="home-banners__img"
                         />
-                    </a>
+                    </button>
                 ))}
             </div>
         </section>

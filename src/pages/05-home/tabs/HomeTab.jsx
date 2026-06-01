@@ -3,7 +3,7 @@ import HomeInStoreHelpCard from "../../../components/home/HomeInStoreHelpCard.js
 import HomeWalletCard from "../../../components/home/HomeWalletCard.jsx";
 import { homeInStoreHelp, walletSummary } from "../../../data/homeMock.js";
 
-function HomeTab() {
+function HomeTab({ onOpenInStoreScan, onOpenStore }) {
     return (
         <div className="home-tab home-tab--home">
             <HomeWalletCard
@@ -11,8 +11,11 @@ function HomeTab() {
                 payableDebt={walletSummary.payableDebt}
                 dueLabel={walletSummary.dueLabel}
             />
-            <HomeBanners />
-            <HomeInStoreHelpCard label={homeInStoreHelp.label} />
+            <HomeBanners onOpenStore={onOpenStore} />
+            <HomeInStoreHelpCard
+                label={homeInStoreHelp.label}
+                onClick={onOpenInStoreScan}
+            />
         </div>
     );
 }
